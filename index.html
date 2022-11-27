@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+        
+             <style> 
+                #content { 
+                        animation: fadeInAnimation ease 2s; 
+                        animation-iteration-count: 1; 
+                        animation-fill-mode: forwards; 
+                    } 
+                @keyframes fadeInAnimation { 
+                        0% { 
+                                opacity: -100; 
+                            } 
+                        100% { 
+                                opacity: 1; 
+                            } 
+                    } 
+                    
+        </style>
+        
+<script src="https://kit.fontawesome.com/cd722a42a5.js" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+</script>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+
+</head> 
+
+<link rel="shortcut icon" href="https://img.icons8.com/external-justicon-flat-justicon/50/000000/external-tree-tree-justicon-flat-justicon-8.png"/>
+
+        
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Halpin-Bolte Family Tree</title>
+                
+<style type="text/css">
+
+    @import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+        
+
+    body {
+        font-family: 'Abril Fatface';
+        background:white;
+        overflow:hidden;
+        width:100vw;
+        height:100vh;
+        position:fixed;
+    }
+
+
+    i {
+        font-family: 'Abril Fatface';
+        text-transform: lowercase;
+        letter-spacing:2px;
+    }
+
+    #content {
+        width:92vw;
+        height:90vh;
+        overflow-x:hidden;
+        overflow-y:hidden;
+        margin:0 auto;
+        margin-top:5vh;
+        background:#bed5d8;
+    }
+
+
+    .title {
+        letter-spacing:1px;
+        font-size:4vw;
+        position:fixed;
+        text-align:center;
+        top:5vh;
+        left:27vw;
+    }
+
+
+
+/*------------------------------- CATEGORIES -------------------------------*/
+
+
+
+
+
+/*------------------------------- HEADERS --------------------------------- */
+
+    .box1-title {
+        position:fixed;
+        top:30vh;
+        left:8vw;
+
+        text-align:center;
+        text-transform:uppercase;
+        font-size:2.25vw;
+    }
+    
+    .box1-title a {
+        color:#000;
+    }
+
+    .box1-title a1 {
+        color:#fff;
+    }
+
+
+
+    .box2:hover {
+        text-decoration: none;
+        cursor: default;
+    }
+
+    .box2-title {
+        position:fixed;
+        top:30vh;
+        float:left;
+        padding-left:36vw;
+        
+        text-align:center;
+        text-transform:uppercase;
+        font-size:2.25vw;
+    }
+    
+    .box2-title a {
+        color: #000;
+    }
+    
+    .box2-title a:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .box2-title a1 {
+        color: #fff;
+    }
+    
+    
+    
+    .box3:hover {
+        text-decoration: none;
+        cursor: default;
+    } 
+    
+    .box3-title {
+        position:fixed;
+        top:30vh;
+        right:8vw;
+        
+        text-align:center;
+        text-transform:uppercase;
+        font-size:2.25vw;
+    }
+    
+    .box3-title a {
+        color: #000;
+    }
+    
+    .box3-title a:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .box3-title a1 {
+        color: #fff;
+    }
+    
+    
+    
+    .box4:hover {
+        text-decoration: none;
+        cursor: default;
+    }    
+    
+    .box4-title {
+        position:fixed;
+        top:53vh;
+        left:43vw;
+        
+        text-align:center;
+        text-transform:uppercase;
+        font-size:2.25vw;
+    }
+    
+    .box4-title a {
+        color: #000;
+    }
+    
+    .box4-title a:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .box4-title a1 {
+        color: #fff;
+    }
+    
+    
+    
+/*--------------------------------- LINKS ----------------------------------*/
+    
+    .box1-link {
+        position:fixed;
+        top:39vh;
+        left:14vw;
+    }
+    
+    .box1-link a {
+        font-size:1.5vw;
+        color:black;
+        text-decoration:none;
+        text-align:center;
+        transition: ease 0.3s;
+    }
+
+    .box1-link a:hover {
+        background:none;
+        color:#E1F4E4;
+        border-radius:3px;
+    }
+    
+    
+    
+    
+    .box2-link1 {
+        position:fixed;
+        top:39vh;
+        left:37vw;
+    }
+    
+    .box2-link1 a {
+        font-size:1.5vw;
+        color:black;
+        text-decoration:none;
+        transition: ease 0.3s;
+    }
+
+    .box2-link1 a:hover {
+        background:none;
+        color:#E1F4E4;
+        border-radius:3px;
+    }
+    
+    
+    
+    .box2-link2 {
+        position:fixed;
+        top:39vh;
+        left:49vw;
+    }
+
+    .box2-link2 a {
+        font-size:1.5vw;
+        color:black;
+        text-decoration:none;
+        transition: ease 0.3s;
+    }
+
+    .box2-link2 a:hover {
+        background:none;
+        color:#E1F4E4;
+        margin:0px;
+        border-radius:3px;
+    }
+    
+    
+    
+    .box2-link3 {
+        position:fixed;
+        top:39vh;
+        left:57vw;
+    }
+
+    .box2-link3 a {
+        font-size:1.5vw;
+        color:black;
+        text-decoration:none;
+        transition: ease 0.3s;
+    }
+
+    .box2-link3 a:hover {
+        background:none;
+        color:#E1F4E4;
+        margin:0px;
+        border-radius:3px;
+    }
+    
+    
+    
+    .box3-link {
+        position:fixed;
+        top:39vh;
+        right:17vw;
+    }
+    
+    .box3-link a {
+        font-size:1.5vw;
+        color:black;
+        text-decoration:none;
+        transition: ease 0.3s;
+    }
+
+    .box3-link a:hover {
+        background:none;
+        color:#E1F4E4;
+        border-radius:3px;
+    }
+    
+/*--------------------------SEARCH BOX ------------------------------*/
+
+    .wrapper {
+        width:;
+        position: fixed;
+        top: 63vh;
+        left: 25vw;
+    }
+
+    .search-input {
+        background: #fff;
+        width: 50vw;
+        position: fixed;
+        font-family: 'Abril Fatface';
+    }
+    
+    .input {
+        height: 10vh;
+        width: 50vw;
+        outline: none;
+        border: none;
+        border-radius: 0.5827505827505828vh;
+        padding: 0 3.125vw 0 1.0416666666666667vw;
+        font-size: 1.5vw;
+        box-sizing: border-box;
+        font-family: 'Abril Fatface';
+        text-align: center; 
+        position: fixed;
+        transition: 0.3s ease-in;
+    }
+    
+    .ui-autocomplete {
+    	font-family: 'Abril Fatface';
+        font-size: 1.5vw;
+        font-weight: 100;
+    	max-height: 22vh;
+    	max-width: 50vw;
+        overflow-y: auto;
+        overflow-x: hidden;
+        color: black;
+        background: #fff;
+        list-style-type: none;
+        border-radius: 0vh 0vh 0.583vh 0.583vh;
+        border-top: #fff;
+    }
+    
+    .input:focus {
+        box-shadow: -1vh .5vw .8vh .2vw #bed5d8;
+        border-radius: 1vh 1vh 0vh 0vh;
+    }
+
+    
+    .ui-autocomplete:focus {
+        transition: 0.3s ease;
+    }
+    
+    .ui-menu {
+        position: fixed;
+    }
+    
+    .ui-menu-item {
+        position: relative;
+        margin-bottom: 0.75vh;
+        left: -1vw;
+        transition: ease 0.3s;
+    }
+
+    
+    .ui-menu-item:hover {
+        color: #829ca0;
+        cursor: pointer;
+    }
+    
+    .ui-helper-hidden-accessible {
+        display: none;
+        color: #fff;
+    }
+
+    
+    #btn {
+        position: fixed;
+        right: 26vw;
+        top: 65vh;
+        font-size: 2.25vw;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+    }
+    
+    .icon {
+        color: #829ca0;
+        background: transparent;
+        transition: 0.3s ease;
+    }
+    
+    .icon:hover {
+        color: #bed5d8;
+    }
+    
+	::-webkit-input-placeholder {
+  		color: #000;
+  		opacity: 0.5;
+  		-webkit-transition: opacity 0.3s ease-in-out;
+  		transition: opacity 0.3s ease-in-out;
+	  	}
+
+	:-moz-placeholder {
+ 	 	color: #000;
+  		opacity: 0.5;
+  		-moz-transition: opacity 0.3s ease-in-out;
+  		transition: opacity 0.3s ease-in-out;
+	}
+
+  	::-moz-placeholder {
+	    	color: #000;
+	    	opacity: 0.5;
+	    	-moz-transition: opacity 0.3s ease-in-out;
+	    	transition: opacity 0.3s ease-in-out;
+	}
+
+	:-ms-input-placeholder {  
+	    	color: #000;
+	    	opacity: 0.5;
+	    	-ms-transition: opacity 0.3s ease-in-out;
+	    	transition: opacity 0.3s ease-in-out;
+	}
+
+	:focus::-webkit-input-placeholder {
+	    	opacity: 0;
+	    	-webkit-transition: opacity 0.3s ease-in-out;
+	    	transition: opacity 0.3s ease-in-out;
+	}
+
+	:focus:-moz-placeholder {
+	    	opacity: 0;
+	    	-moz-transition: opacity 0.3s ease-in-out;
+	    	transition: opacity 0.3s ease-in-out;
+	}
+
+	:focus::-moz-placeholder {
+	    	opacity: 0;
+	    	-moz-transition: opacity 0.3s ease-in-out;
+	    	transition: opacity 0.3s ease-in-out;
+	}
+
+	:focus:-ms-input-placeholder {  
+	    	opacity: 0;
+	    	-ms-transition: opacity 0.3s ease-in-out;
+	    	transition: opacity 0.3s ease-in-out;
+	}
+
+  </style>
+                
+</head>
+
+
+
+<body>
+
+    <section id="content">
+                
+        <h1 class="title">Halpin-Bolte Family Tree</h1>
+        
+            
+                
+        <div class="box1">
+                
+            <div class="box1-title">
+                <a>browse by 
+	            <a1>last name</a1></a>
+	        </div>
+        	        
+	        <div class="box1-link">
+	            <a href="https://halpinboltelastnames.tumblr.com/">last name directory</a>    
+	        </div>
+	             
+        </div>
+                
+                
+                
+        <div class="box2">
+                
+            <div class="box2-title">
+                <a>browse by 
+	            <a1>place</a1></a>
+	        </div>
+        	        
+	        <div class="box2-link1">
+	            <a href="https://halpinboltefamilymaps.tumblr.com/usa">United States</a>    
+	        </div>
+        	        
+	        <div class="box2-link2">
+	            <a href="https://halpinboltefamilymaps.tumblr.com/ireland">Ireland</a>    
+	        </div>
+        	        
+	        <div class="box2-link3">
+	            <a href="https://halpinboltefamilymaps.tumblr.com/germany">Germany</a>    
+	        </div>
+	             
+        </div>
+                
+                
+                
+        <div class="box3">
+                
+            <div class="box3-title">
+                <a>browse the    
+	            <a1>tree</a1></a>
+	        </div>
+        	        
+	        <div class="box3-link">
+	            <a href="https://halpinboltetree.tumblr.com/">tree</a>    
+	        </div>
+	             
+        </div>
+                
+                
+                
+        <div class="box4">
+                
+            <div class="box4-title">
+                <a>or    
+	            <a1>search</a1></a>
+	        </div>
+	             
+        </div>
+        
+        
+                
+<div class="wrapper">
+
+  <div class="search-input">     
+    
+    <input type="text" class="input" placeholder="type to search">
+
+    <button id="btn" onclick="btnClick">
+            
+      <div class="icon">
+            
+        <i class="fas fa-search" aria-hidden="true">
+         </i>
+            
+      </div>
+            
+    </button>
+        
+  </div>
+    
+</div>
+
+  
+
+    </section>
+                
+</body>
+
+
+
+
+
+<script>
+        
+$(".input").autocomplete({
+  source: [ 
+{label: "Charles Anderson (1854 — 1915)",
+selected: "Charles Anderson",
+url: "https://halpinboltefamilytree.tumblr.com/andersoncharlespinckney"},
+
+{label: "Harriet Anderson Bolte (1846 — 1919)",
+selected: "Harriet Anderson Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/andersonharrietemmeline"},
+
+{label: "Jennie Anderson Mumbower (1865 — 1948)",	
+selected: "Jennie Anderson Mumbower",
+url: "https://halpinboltefamilytree.tumblr.com/andersonvirginia"},
+
+{label: "Samuel Anderson (1848 — 1934)",
+selected: "Samuel Anderson",
+url: "https://halpinboltefamilytree.tumblr.com/andersonsamuel"},
+
+{label: "William Anderson (1817 — 1872)",
+selected: "William Anderson",
+url: "https://halpinboltefamilytree.tumblr.com/andersonwilliam"},
+
+{label: "William E. Anderson (1851 — 1930)",
+selected: "William E. Anderson",
+url: "https://halpinboltefamilytree.tumblr.com/andersonjrwilliam"},
+
+{label: "Jack Basten (1925 — 1995)",
+selected: "John A. Basten",
+url: "https://halpinboltefamilytree.tumblr.com/bastenjohnarthur"},
+
+{label: "John A. Basten (1925 — 1995)",
+selected: "John A. Basten",
+url: "https://halpinboltefamilytree.tumblr.com/bastenjohnarthur"},
+
+{label: "Adelheid Bolte Kohler (1845 — 1920)",
+selected: "Adelheid Bolte Kohler",
+url: "https://halpinboltefamilytree.tumblr.com/bolteadelheid"},
+
+{label: "Anna Bolte Dinger (1877 — 1911)",
+selected: "Anna Bolte Dinger",
+url: "https://halpinboltefamilytree.tumblr.com/boltehattieanna"},
+
+{label: "Anna Bolte Miene (1833 — 1925)",
+selected: "Anna Bolte Miene",
+url: "https://halpinboltefamilytree.tumblr.com/bolteanna"},
+
+{label: "Barbara Jo Bolte Mack (1944 —  )",
+selected: "Barbara Jo Bolte Mack",
+url: "https://halpinboltefamilytree.tumblr.com/boltebarbarajo"},
+
+{label: "Catharina Bolte Dede Brenneisen (1831 — 1861)",
+selected: "Catharina Bolte Dede Brenneisen",
+url: "https://halpinboltefamilytree.tumblr.com/boltecatharina"},
+
+{label: "Charles E. Bolte (1867 — 1901)",
+selected: "Charles E. Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/boltecharlese"},
+
+{label: "Charles G. Bolte (1913 — 1998)",
+selected: "Charles G. Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/boltecharlesgregory"},
+
+{label: "Christine Bolte (1842 — 1854)",
+selected: "Christine Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/boltechristine"},
+
+{label: "Claire Bolte Halpin (1906 — 1988)",
+selected: "Claire Bolte Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/boltemargaretclaire"},
+
+{label: "Frank B. Bolte (1869 — 1925)",
+selected: "Frank B. Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/boltefrankbuford"},
+
+{label: "Frank B. Bolte Jr. (1903 — 1955)",
+selected: "Frank B. Bolte Jr.",
+url: "https://halpinboltefamilytree.tumblr.com/boltejrfrankbuford"},
+
+{label: "Fred Bolte Jr. (1839 — 1882)",
+selected: "Fred Bolte Jr.",
+url: "https://halpinboltefamilytree.tumblr.com/boltefriedrich"},
+
+{label: "Fred Bolte Sr. (1801 — 1872)",
+selected: "Fred Bolte Sr.",
+url: "https://halpinboltefamilytree.tumblr.com/boltejohanncarlfriedrich"},
+
+{label: "Frederick E. Bolte (1874 — 1933)",
+selected: "Freddie Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/boltefrederickedgar"},
+
+{label: "Johann Christian Bolte (1836 — 1872)",
+selected: "Johann Christian Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/boltejohannchristian"},
+
+{label: "Margaret Claire Bolte (1906 — 1988)",
+selected: "Claire Bolte Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/boltemargaretclaire"},
+
+{label: "Mary Bolte Sikking (1880 — 1956)",
+selected: "Mary Bolte Sikking",
+url: "https://halpinboltefamilytree.tumblr.com/boltemaryiola"},
+
+{label: "Sarah Jane Bolte Stephens (1876 — 1956)",
+selected: "Sarah Jane Bolte Stephens",
+url: "https://halpinboltefamilytree.tumblr.com/boltesarahjane"},
+
+{label: "Cletus Canavan Jr. (1926 — 1983)",
+selected: "Cletus Canavan Jr.",
+url: "https://halpinboltefamilytree.tumblr.com/canavanjrcletuscalvert"},
+
+{label: "Pat Coyne Halpin (1935 — 2021)",
+selected: "Pat Coyne Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/coynepatriciaann"},
+
+{label: "Adelheid Desebrok Bolte (1806 — 1857)",
+selected: "Adelheid Desebrok Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/desebrokadelheid"},
+
+{label: "Gerd Desebrok (1773 — ?)",
+selected: "Gerd Desebrok",
+url: "https://halpinboltefamilytree.tumblr.com/desebrokgerd"},
+
+{label: "Ellen Donovan O'Sullivan (1815 — 1909)",
+selected: "Ellen Donovan O'Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/donovanellen"},
+
+{label: "Winnefred Dwyer Moloney (1834 — 1874)",
+selected: "Winnefred Dwyer Moloney",
+url: "https://halpinboltefamilytree.tumblr.com/dwyerwinnefred"},
+
+{label: "Lorene Faddis Halpin (1900 — 1986)",	
+selected: "Lorene Faddis Halpin",	
+url: "https://halpinboltefamilytree.tumblr.com/faddislorenevirginia"},
+
+{label: "Bob Halpin Sr. (1934 —  )",
+selected: "Robert F. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinrobertfranklin"},
+
+{label: "Robert F. Halpin (1934 —  )",
+selected: "Robert F. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinrobertfranklin"},
+
+{label: "Clifford Halpin (1896 — 1962)",
+selected: "Clifford Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpincliffordedward"},
+
+{label: "George A. Halpin Jr. (1929 — 2003)",
+selected: "George A. Halpin Jr.",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjrgeorgealphonsus"},
+
+{label: "George A. Halpin Sr. (1902 — 1964)",
+selected: "George A. Halpin Sr.",
+url: "https://halpinboltefamilytree.tumblr.com/halpingeorgealphonsus"},
+
+{label: "Jack Halpin (1937 —  )",
+selected: "John T. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjohnthomas"},
+
+{label: "James Halpin (1892 — 1968)",
+selected: "James J. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjamesjoseph"},
+
+{label: "Jeanne Halpin Canavan (1931 — 2006)",
+selected: "Jeanne Halpin Canavan",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjeannekathryn"},
+
+{label: "Johanna Halpin Leyden (1838 — 1891)",
+selected: "Johanna Halpin Leyden",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjohanna"},
+
+{label: "John F. Halpin (1889 — 1947)",
+selected: "John F. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjohnfrank"},
+
+{label: "John T. Halpin (1937 —  )",
+selected: "John T. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjohnthomas"},
+
+{label: "Kathryn Halpin Uihlein (1944 — 2021)",
+selected: "Kathryn Halpin Uihlein",
+url: "https://halpinboltefamilytree.tumblr.com/halpinkathrynellen"},
+
+{label: "Kay Halpin Uihlein (1944 — 2021)",
+selected: "Kathryn Halpin Uihlein",
+url: "https://halpinboltefamilytree.tumblr.com/halpinkathrynellen"},
+
+{label: "Margaret A. Halpin (1925 — 2000)",
+selected: "Margaret A. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmargaretann"},
+
+{label: "Margie Halpin (1925 — 2000)",
+selected: "Margaret A. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmargaretann"},
+
+{label: "Mary Ann Halpin (1860 — 1861)",
+selected: "Mary Ann Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmaryann-1"},
+
+{label: "Mary Ann Halpin Ruff (1931 — 2012)",
+selected: "Mary Ann Halpin Ruff",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmaryann-2"},
+
+{label: "Mary Claire Halpin Basten (1927 — 2001)",
+selected: "Mary Claire Halpin Basten",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmaryclaire"},
+
+{label: "Mary Halpin (1833 — 1915)",
+selected: "Mary Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmary"},
+
+{label: "Michael J. Halpin (1932 — 2018)",
+selected: "Michael J. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmichaeljames"},
+
+{label: "Mike Halpin Sr. (1932 — 2018)",
+selected: "Michael J. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinmichaeljames"},
+
+{label: "Patrick Halpin (1836 — 1914)",
+selected: "Patrick Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinpatrick"},
+
+{label: "Thomas Halpin (1831 — 1861)",
+selected: "Thomas Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinthomas"},
+
+{label: "Thomas J. Halpin (1857 — 1924)",
+selected: "Thomas J. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinthomasjames"},
+
+{label: "Thomas P. Halpin (1887 — 1895)",
+selected: "Thomas P. Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinthomaspatrick"},
+
+{label: "Timothy Halpin Jr. (1852 — 1930)",
+selected: "Timothy Halpin Jr.",
+url: "https://halpinboltefamilytree.tumblr.com/halpinjrtimothy"},
+
+{label: "Timothy Halpin Sr. (? — 1884)",
+selected: "Timothy Halpin Sr.",
+url: "https://halpinboltefamilytree.tumblr.com/halpintimothy"},
+
+{label: "Tom Halpin (1924 — 2013)",
+selected: "Tom Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpintom"},
+
+{label: "William Halpin (1884 — 1906)",
+selected: "William Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinwilliammichael"},
+
+{label: "Winifred Halpin (1900 — 1958)",
+selected: "Winifred Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/halpinwinifredcatherine"},
+
+{label: "Sarah Jane McDonald Anderson (1823 — 1878)",
+selected: "Sarah Jane McDonald Anderson",
+url: "https://halpinboltefamilytree.tumblr.com/mcdonaldsarahjane"},
+
+{label: "Milton Meridier (1925 — 1967)",
+selected: "Milton Meridier",
+url: "https://halpinboltefamilytree.tumblr.com/meridiermiltonmichael"},
+
+{label: "Vesta Miller Bolte (1916 — 1982)",
+selected: "Vesta Miller Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/millervestavirginia"},
+
+{label: "Anna Moloney Halpin (1865 — 1948)",
+selected: "Anna Moloney Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/moloneyanna"},
+
+{label: "Mary Moloney Burke (1870 — 1946)",
+selected: "Mary Moloney Burke",
+url: "https://halpinboltefamilytree.tumblr.com/moloneymarycatherine"},
+
+{label: "Michael Moloney (1867 — 1893)",
+selected: "Michael Moloney",
+url: "https://halpinboltefamilytree.tumblr.com/moloneymichaelwilliam"},
+
+{label: "William Moloney (1832 — 1910)",
+selected: "William Moloney",
+url: "https://halpinboltefamilytree.tumblr.com/moloneywilliam"},
+
+{label: "Mary Ann Moran Halpin (1934 —  )",
+selected: "Mary Ann Moran Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/moranmaryann"},
+
+{label: "Bridget Mulquinn O'Sullivan (1842 — 1924)",
+selected: "Bridget Mulquinn O'Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/mulquinnbridget"},
+
+{label: "Katherine Mulquinn O’Leary (1823 — 1900)",
+selected: "Katherine Mulquinn O’Leary",
+url: "https://halpinboltefamilytree.tumblr.com/mulquinnkatherine"},
+
+{label: "Michael Mulquinn Jr. (1833 — 1874)",
+selected: "Michael Mulquinn Jr.",
+url: "https://halpinboltefamilytree.tumblr.com/mulquinnjrmichael"},
+
+{label: "Michael Mulquinn Sr. (1800 — 1854)",
+selected: "Michael Mulquinn Sr.",
+url: "https://halpinboltefamilytree.tumblr.com/mulquinnmichael"},
+
+{label: "William Mulquinn (1836 — 1866)",
+selected: "William Mulquinn",
+url: "https://halpinboltefamilytree.tumblr.com/mulquinnwilliam"},
+
+{label: "Dennis O'Sullivan (1811 — 1884)",
+selected: "Dennis O'Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/osullivandennis"},
+
+{label: "Ellen O'Sullivan McConnell Brannick (1845 — 1889)",
+selected: "Ellen O'Sullivan McConnell Brannick",
+url: "https://halpinboltefamilytree.tumblr.com/osullivanellen"},
+
+{label: "Johanna O'Sullivan McCarthy (1852 — 1882)",
+selected: "Johanna O'Sullivan McCarthy",
+url: "https://halpinboltefamilytree.tumblr.com/osullivanjohanna"},
+
+{label: "John O'Sullivan (1841 — 1874)",
+selected: "John O'Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/osullivanjohn"},
+
+{label: "Mary O'Sullivan Brannick (1843 — 1873)",
+selected: "Mary O'Sullivan Brannick",
+url: "https://halpinboltefamilytree.tumblr.com/osullivanmary"},
+
+{label: "Thomas O'Sullivan (1838 — 1893)",
+selected: "Thomas O'Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/osullivanthomas"},
+
+{label: "June Renfro Bolte (1913 — 2009)",
+selected: "June Renfro Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/renfrojunerida"},
+
+{label: "Arline Ruff Halpin (1935 — 2013)",
+selected: "Arline Ruff Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/ruffarlinejoyce"},
+
+{label: "Alice Ryan Halpin (1832 — 1869)",
+selected: "Alice Ryan Halpin",
+url: "https://halpinboltefamilytree.tumblr.com/ryanalice"},
+
+{label: "Ellen Ryan Humphries (1826 — 1884)",
+selected: "Ellen Ryan Humphries",
+url: "https://halpinboltefamilytree.tumblr.com/ryanellen"},
+
+{label: "Johanna Ryan Reynolds (1867 — 1937)",
+selected: "Johanna Ryan Reynolds",
+url: "https://halpinboltefamilytree.tumblr.com/ryanjohannaalice"},
+
+{label: "John T. Ryan (1829 — 1869)",
+selected: "John T. Ryan",
+url: "https://halpinboltefamilytree.tumblr.com/ryanjohnthomas"},
+
+{label: "Mary Ryan Ward (1834 — 1889)",
+selected: "Mary Ryan Ward",
+url: "https://halpinboltefamilytree.tumblr.com/ryanmary"},
+
+{label: "Patrick Ryan (1789 — 1860)",
+selected: "Patrick Ryan",
+url: "https://halpinboltefamilytree.tumblr.com/ryanpatrick"},
+
+{label: "Daniel Sullivan (1860 — 1923)",
+selected: "Daniel Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/sullivandaniel"},
+
+{label: "Denis Sullivan (1869 — 1873)",
+selected: "Denis Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/sullivandenis"},
+
+{label: "John Sullivan (1874 — 1904)",
+selected: "John Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/sullivanjohn"},
+
+{label: "Margaret Sullivan Bolte (1872 — 1965)",
+selected: "Margaret Sullivan Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/sullivanmargaretmarie"},
+
+{label: "Mary Sullivan Tansey (1877 — 1944)",
+selected: "Mary Sullivan Tansey",
+url: "https://halpinboltefamilytree.tumblr.com/sullivanmaryellen"},
+
+{label: "Mom Bolte (1872 — 1965)",
+selected: "Margaret Sullivan Bolte",
+url: "https://halpinboltefamilytree.tumblr.com/sullivanmargaretmarie"},
+
+{label: "Thomas M. Sullivan (1880 — 1882)",
+selected: "Thomas M. Sullivan",
+url: "https://halpinboltefamilytree.tumblr.com/sullivanthomasmichael"}],
+  minLength: 3,
+  select: function(event, ui) {
+		$(".input").val(ui.item.selected);
+		return false;
+	},
+  focus: function (event, ui) {
+    url = ui.item.url;
+  }
+});
+
+
+$( ".selector" ).autocomplete({
+  position: {my: "right+1vw top-2vh", collision: "none"}
+});
+
+$(".input").autocomplete({
+  blur: function (event, ui) {
+    event.preventDefault();
+    window.location = ui.item.url;
+  }
+});
+
+$('.input').keypress(function (e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      btnClick();
+    }
+});
+
+$("#btn").click(function () {
+    btnClick();
+});
+
+function btnClick() {
+    if (url !== "") go(url);
+}
+
+function go(url) {
+    window.open(url, "_self");
+}
+
+</script>
+
+
+</html>
