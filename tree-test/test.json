@@ -1,0 +1,18 @@
+{
+  "father" : "Timothy Halpin",
+  "fatherDates" : "d. 1886",
+  "mother" : "Margaret Burke",
+  "motherDates" : "unknown",
+  "children" : [
+    { "name" : "Mary Halpin",
+      "childDates" : "1833-1915"},
+    { "name" : "Patrick Halpin",
+      "childDates" : "1836-1914"},
+    { "name" : "Johanna Halpin",
+      "childDates" : "1838-1891"},
+    { "name" : "Timothy Halpin, Jr.",
+      "childDates" : "1850-1930"},
+    { "name" : "Thomas Halpin",
+      "childDates" : "1831-1861"}
+    ]
+}
