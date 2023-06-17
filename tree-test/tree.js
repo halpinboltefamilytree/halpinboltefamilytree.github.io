@@ -202,7 +202,7 @@
     //
     panStartHandler: function (e) {
       var $chart = $(e.delegateTarget);
-      if ($(e.target).closest('#chart-container').length || (e.touches && e.touches.length > 1)) {
+      if ($(e.target).closest('.node').length || (e.touches && e.touches.length > 1)) {
         $chart.data('panning', false);
         return;
       } else {
@@ -275,7 +275,7 @@
     },
     //
     bindPan: function () {
-      this.$chartContainer.css('overflow', 'hidden');
+      this.$chartContainer.css('overflow', 'auto');
       this.$chart.on('mousedown touchstart', this.panStartHandler);
       $(document).on('mouseup touchend', { 'chart': this.$chart }, this.panEndHandler);
     },
