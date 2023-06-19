@@ -150,7 +150,6 @@ function BaseControl(element, options, taskManagerFactory, eventArgsFactory, tem
       _dragFrom,
       _scrollFrom,
       _scrollTo,
-      _dragImage,
       _dragTimer,
       _debug = false,
       _timer = null;
@@ -806,8 +805,6 @@ function BaseControl(element, options, taskManagerFactory, eventArgsFactory, tem
     var scrollPanel = _data.layout.scrollPanel;
     _dragFrom = new _graphics_structs_Point__WEBPACK_IMPORTED_MODULE_0__["default"](event.clientX, event.clientY);
     _scrollFrom = new _graphics_structs_Point__WEBPACK_IMPORTED_MODULE_0__["default"](scrollPanel.scrollLeft, scrollPanel.scrollTop);
-    _dragImage = _dragImage || new Image();
-    event.dataTransfer.setDragImage(_dragImage, 0, 0);
   }
 
   function onDragOver(event) {
@@ -14091,7 +14088,6 @@ __webpack_require__.r(__webpack_exports__);
  * @param {string[]|undefined} arg1 Parents ids
  * @param {string} arg2 Title
  * @param {string} arg3 Description 
- * @param {string} arg4 Image
  */
 
 function FamItemConfig(arg0, arg1, arg2, arg3, arg4) {
@@ -14163,14 +14159,6 @@ function FamItemConfig(arg0, arg1, arg2, arg3, arg4) {
    */
 
   this.description = null;
-  /**
-   * Image
-   * 
-   * @group Template
-   * @type {string}
-   */
-
-  this.image = null;
   /**
    * Context object
    * 
@@ -14375,7 +14363,6 @@ function FamItemConfig(arg0, arg1, arg2, arg3, arg4) {
       this.parents = arg1;
       this.title = arg2;
       this.description = arg3;
-      this.image = arg4;
       break;
   }
 }
@@ -15876,7 +15863,6 @@ __webpack_require__.r(__webpack_exports__);
  * @param {string} arg1 Parent id
  * @param {string} arg2 Title
  * @param {string} arg3 Description 
- * @param {string} arg4 Image
  */
 
 function OrgItemConfig(arg0, arg1, arg2, arg3, arg4) {
@@ -15910,14 +15896,6 @@ function OrgItemConfig(arg0, arg1, arg2, arg3, arg4) {
    */
 
   this.description = null;
-  /**
-   * Image
-   * 
-   * @group Template
-   * @type {string}
-   */
-
-  this.image = null;
   /**
    * Context object
    * 
@@ -16172,7 +16150,6 @@ function OrgItemConfig(arg0, arg1, arg2, arg3, arg4) {
       this.parent = arg1;
       this.title = arg2;
       this.description = arg3;
-      this.image = arg4;
       break;
   }
 }
@@ -27605,7 +27582,6 @@ function ItemsContentOptionTask(optionsTask, defaultItemConfig) {
       id: new _readers_ValueReader__WEBPACK_IMPORTED_MODULE_0__["default"](["string", "number"], true),
       title: new _readers_ValueReader__WEBPACK_IMPORTED_MODULE_0__["default"](["string"], true),
       description: new _readers_ValueReader__WEBPACK_IMPORTED_MODULE_0__["default"](["string"], true),
-      image: new _readers_ValueReader__WEBPACK_IMPORTED_MODULE_0__["default"](["string"], true),
       context: new _readers_ValueReader__WEBPACK_IMPORTED_MODULE_0__["default"](["string", "number", "object"], true),
       itemTitleColor: new _readers_ValueReader__WEBPACK_IMPORTED_MODULE_0__["default"](["string"], false, defaultItemConfig.itemTitleColor),
       groupTitle: new _readers_ValueReader__WEBPACK_IMPORTED_MODULE_0__["default"](["string"], false, defaultItemConfig.groupTitle),
@@ -40473,16 +40449,10 @@ function ItemTemplate(options, itemTemplateConfig) {
         color = Object(_common_colors__WEBPACK_IMPORTED_MODULE_0__["highestContrast"])(itemTitleColor, options.itemTitleSecondFontColor, options.itemTitleFirstFontColor),
         element = data.element,
         titleBackground = element.firstChild,
-        photo = element.childNodes[1].firstChild,
         title = titleBackground.firstChild,
         description = element.childNodes[2];
     _common_jsonml_html__WEBPACK_IMPORTED_MODULE_2__["default"].applyStyles(titleBackground, {
       "backgroundColor": itemTitleColor
-    });
-    photo.src = itemConfig.image;
-    photo.alt = itemConfig.title;
-    _common_jsonml_html__WEBPACK_IMPORTED_MODULE_2__["default"].applyStyles(title, {
-      "color": color
     });
     title.textContent = itemConfig.title;
     description.textContent = itemConfig.description;
@@ -40897,10 +40867,6 @@ function UserTemplate(options, content, onRender) {
       var itemConfig = data.context,
           itemTitleColor = itemConfig.itemTitleColor != null ? itemConfig.itemTitleColor : _enums__WEBPACK_IMPORTED_MODULE_4__["Colors"].RoyalBlue,
           color = Object(_common_colors__WEBPACK_IMPORTED_MODULE_1__["highestContrast"])(itemTitleColor, options.itemTitleSecondFontColor, options.itemTitleFirstFontColor);
-      Object(_graphics_dom__WEBPACK_IMPORTED_MODULE_2__["getElementsByName"])(this, data.element, "photo", function (node) {
-        node.src = itemConfig.image;
-        node.alt = itemConfig.title;
-      });
       Object(_graphics_dom__WEBPACK_IMPORTED_MODULE_2__["getElementsByName"])(this, data.element, "titleBackground", function (node) {
         _common_jsonml_html__WEBPACK_IMPORTED_MODULE_3__["default"].applyStyles(node, {
           "background": itemTitleColor
@@ -40992,11 +40958,6 @@ function CheckBoxTemplate(selectCheckBoxLabel) {
   }
 
   function render(doc, position, data) {
-    var image = data.isSelected ? _checked : _unchecked;
-    doc.save();
-    /* photo */
-
-    doc.image(image, position.x, position.y);
     doc.font('Helvetica', 11).text(selectCheckBoxLabel, position.x + 20, position.y + 4, {
       ellipsis: true,
       width: position.width - 4,
@@ -41272,15 +41233,6 @@ function ItemTemplate(options, itemTemplateConfig) {
       height: 16,
       align: 'left'
     });
-    /* photo */
-
-    if (itemConfig.image != null) {
-      doc.image(itemConfig.image, position.x + 3, position.y + 24);
-    }
-    /* photo frame */
-
-
-    doc.rect(position.x + 3, position.y + 24, 50, 60).stroke('#cccccc');
     /* description */
 
     doc.fillColor('black').font('Helvetica', 10).text(itemConfig.description, position.x + 56, position.y + 24, {
