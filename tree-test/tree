@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Family Chart Relations</title>
+
+  
+  <script type="text/javascript" src="https://unpkg.com/basicprimitives@6.2.2/dist/primitives.js"></script>
+
+
+<style>
+
+.tree-titles-frame {
+	
+}
+.tree-scrollframe {
+	border: 1px dotted #dddddd;
+}
+
+.tree-item {
+	position: relative;
+	overflow: auto;
+	text-align: center;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	top: 5px; 
+	width: 100%; 
+	height: 28px; 
+	font-size: 12px;
+}
+
+.tree-corner-all {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.tree-item-frame {
+	border: 1px solid #dddddd;
+	background: #eeeeee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;
+	color: #333333;
+}
+
+.tree-title {
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
+	line-height: 16px;
+	color: white;
+}
+
+.tree-description {
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.tree-cursor-frame {
+	border: 2px solid #fbd850;
+	background: #ffffff;
+	color: #eb8f00;
+}
+
+.tree-highlight-frame {
+	
+}
+
+</style>
+
+
+  <script type='text/javascript'>
+    var control;
+    document.addEventListener('DOMContentLoaded', function () {
+      var options = new primitives.FamConfig();
+
+      var items = [
+{ id: 1, title: "Timothy Halpin", description: "" },
+{ id: 2, relativeItem: 1, title: "Margaret Burke", description: "" },
+	{ id: 18, parents: [1, 2], title: "Mary Halpin", description: "" },
+	{ id: 19, parents: [1, 2], title: "Patrick Halpin", description: "" },
+	{ id: 20, parents: [1, 2], title: "Johanna Halpin", description: "" },
+	{ id: 21, parents: [1, 2], title: "Timothy Halpin Jr.", description: "" },
+	{ id: 17, parents: [1, 2], title: "Thomas Halpin", description: "" },
+
+
+{ id: 3, title: "Patrick Ryan", description: "" },
+{ id: 4, title: "Mary Tinsley", description: "" },
+	{ id: 22, parents: [3, 4], title: "Alice Ryan", description: "" },
+	{ id: 23, relativeItem: 22, parents: [3, 4], title: "Ellen Ryan", description: "" },
+	{ id: 24, relativeItem: 22, parents: [3, 4], title: "John T. Ryan", description: "" },
+	{ id: 25, relativeItem: 22, parents: [3, 4], title: "Mary Ryan", description: "" },
+
+
+{ id: 8, title: "Michael Moloney", description: "" },
+{ id: 7, title: "Ann Mulcahy", description: "" },
+
+
+{ id: 5, title: "Malachy Dwyer", description: "" },
+{ id: 6, title: "Jude Ryan", description: "" },
+	{ id: 28, parents: [5, 6], title: "Johanna Dwyer", description: "" },
+
+
+{ id: 9, title: "Johann Carl Friedrich Bolte", description: "" },
+{ id: 10, title: "Adelheid Desebrok", description: "" },
+	{ id: 30, parents: [9, 10], title: "Catharina Bolte", description: "" },
+	{ id: 31, parents: [9, 10], title: "Anna Bolte", description: "" },
+	{ id: 32, parents: [9, 10], title: "Johann Christian Bolte", description: "" },
+	{ id: 33, parents: [9, 10], title: "Christine Bolte", description: "" },
+	{ id: 34, parents: [9, 10], title: "Adelheid Bolte", description: "" },
+
+
+{ id: 12, title: "William Anderson", description: "" },
+{ id: 11, title: "Sarah Jane McDonald", description: "" },
+	{ id: 36, parents: [11, 12], title: "Samuel Anderson", description: "" },
+	{ id: 37, parents: [11, 12], title: "William Edward Anderson", description: "" },
+	{ id: 38, parents: [11, 12], title: "Charles Pinckney Anderson", description: "" },
+	{ id: 39, parents: [11, 12], title: "Virginia Anderson", description: "" },
+
+
+{ id: 14, title: "Dennis O'Sullivan", description: "" },
+{ id: 13, title: "Ellen Donovan", description: "" },
+	{ id: 41, parents: [13, 14], title: "John O'Sullivan", description: "" },
+	{ id: 42, parents: [13, 14], title: "Mary O'Sullivan", description: "" },
+	{ id: 43, parents: [13, 14], title: "Ellen O'Sullivan", description: "" },
+	{ id: 44, parents: [13, 14], title: "Johanna O'Sullivan", description: "" },
+	{ id: 45, parents: [13, 14], title: "Daniel O'Sullivan", description: "" },
+
+
+{ id: 15, title: "Michael Mulquinn", description: "" },
+{ id: 16, title: "Margaret Leahy", description: "" },
+	{ id: 47, parents: [15, 16], title: "Katherine Mulquinn", description: "" },
+	{ id: 48, parents: [15, 16], title: "Michael Mulquinn Jr.", description: "" },
+	{ id: 49, parents: [15, 16], title: "William Mulquinn", description: "" },
+
+
+
+
+			{ id: 53, parents: [17, 22], title: "Mary Ann Halpin", description: "" },
+
+
+	{ id: 26, parents: [7, 8], title: "William Moloney", description: "" },
+	{ id: 27, parents: [5, 6], title: "Winnefred Dwyer", description: "" },
+			{ id: 51, relativeItem: 50, parents: [26, 27], title: "Michael William Moloney", description: "" },
+			{ id: 52, relativeItem: 50, parents: [26, 27], title: "Mary Catherine Moloney", description: "" },
+
+
+	{ id: 29, parents: [9, 10], title: "Friedrich Bolte", description: "" },
+	{ id: 35, parents: [11, 12], title: "Harriet Emmeline Anderson", description: "" },
+			{ id: 56, parents: [29, 35], title: "Charles E. Bolte", description: "" },
+			{ id: 57, parents: [29, 35], title: "Frederick Edgar Bolte", description: "" },
+			{ id: 58, parents: [29, 35], title: "Sarah Jane Bolte", description: "" },
+			{ id: 59, parents: [29, 35], title: "Hattie Anna Bolte", description: "" },
+			{ id: 60, parents: [29, 35], title: "Mary Iola Bolte", description: "" },
+
+
+	{ id: 40, parents: [13, 14], title: "Thomas O'Sullivan", description: "" },
+	{ id: 46, parents: [15, 16], title: "Bridget Mulquinn", description: "" },
+			{ id: 62, parents: [40, 46], title: "Denis Sullivan", description: "" },
+			{ id: 63, parents: [40, 46], title: "John Sullivan", description: "" },
+			{ id: 64, parents: [40, 46], title: "Mary Ellen Sullivan", description: "" },
+			{ id: 65, parents: [40, 46], title: "Thomas Michael Sullivan", description: "" },
+
+
+
+
+			{ id: 54, parents: [17, 22], title: "Thomas James Halpin", description: "" },
+			{ id: 50, parents: [26, 27], title: "Anna Moloney", description: "" },
+				{ id: 66, parents: [50, 54], title: "William Michael Halpin", description: "" },
+				{ id: 67, parents: [50, 54], title: "Thomas Patrick Halpin", description: "" },
+				{ id: 68, parents: [50, 54], title: "John Frank Halpin", description: "" },
+				{ id: 69, parents: [50, 54], title: "James Joseph Halpin", description: "" },
+				{ id: 72, parents: [50, 54], title: "Winifred Catherine Halpin", description: "" },
+
+
+			{ id: 55, parents: [29, 35], spouses: [61], title: "Frank Buford Bolte", description: "" },
+			{ id: 61, parents: [40, 46], spouses: [55], title: "Margaret Marie Sullivan", description: "" },
+				{ id: 75, parents: [55, 61], title: "Frank Buford Bolte Jr.", description: "" },
+				{ id: 77, parents: [55, 61], title: "Charles Gregory Bolte", description: "" },
+
+
+
+				{ id: 70, parents: [50, 54], title: "Clifford Edward Halpin", description: "" },
+				{ id: 71, title: "Lorene Virginia Faddis", description: "" },
+					{ id: 79, parents: [70, 71], title: "Thomas James Halpin", description: "" },
+					{ id: 80, parents: [70, 71], title: "Mary Ann Halpin", description: "" },
+
+
+				{ id: 73, parents: [50, 54], title: "George Alphonsus Halpin", description: "" },
+				{ id: 74, parents: [55, 61], title: "Margaret Claire Bolte", description: "" },
+					{ id: 83, parents: [73, 74], title: "Margaret Ann Halpin", description: "" },
+					{ id: 85, parents: [73, 74], title: "Mary Claire Halpin", description: "" },
+					{ id: 86, parents: [73, 74], title: "George Alphonsus Halpin Jr.", description: "" },
+					{ id: 89, parents: [73, 74], title: "Jeanne Kathryn Halpin", description: "" },
+					{ id: 90, parents: [73, 74], title: "Michael James Halpin", description: "" },
+					{ id: 92, parents: [73, 74], title: "Robert Franklin Halpin", description: "" },
+					{ id: 94, parents: [73, 74], title: "John Thomas Halpin", description: "" },
+					{ id: 82, parents: [73, 74], title: "Kathryn Ellen Halpin", description: "" }
+      ];
+
+      options.pageFitMode = primitives.PageFitMode.AutoSize;
+      options.items = items;
+      options.cursorItem = 50;
+      options.linesWidth = 3;
+      options.linesColor = "black";
+      options.hasSelectorCheckbox = primitives.Enabled.False;
+      options.normalLevelShift = 50;
+      options.lineLevelShift = 50;
+      options.normalItemsInterval = 50;
+      options.lineItemsInterval = 50;
+      options.defaultTemplateName = "tree";
+      options.templates = [getTreeTemplate()];
+      options.onItemRender = onTemplateRender;
+      options.bevelSize = 1;
+      options.elbowDotSize = 1;
+
+      control = primitives.FamDiagram(document.getElementById("basicdiagram"), options);
+    });
+
+    function onTemplateRender(event, data) {
+      switch (data.renderingMode) {
+        case primitives.RenderingMode.Create:
+          /* Initialize template content here */
+          break;
+        case primitives.RenderingMode.Update:
+          /* Update template content here */
+          break;
+      }
+
+      var itemConfig = data.context;
+
+      if (data.templateName == "tree") {
+        var title = data.element.firstChild;
+        title.textContent = itemConfig.title;
+      }
+    }
+
+    function getTreeTemplate() {
+      var result = new primitives.TemplateConfig();
+      result.name = "tree";
+
+      result.itemSize = new primitives.Size(175, 60);
+
+
+      result.itemTemplate =
+        '<div class="tree-item tree-corner-all tree-item-frame" style="width:' + result.itemSize.width + 'px; height: ' + result.itemSize.height + 'px;">'
+        + '<div name="title" class="tree-item">'
+        + '</div>'
+        + '</div>';
+
+      return result;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="basicdiagram" style="border-style: dotted; border-width: 1px;"></div>
+</body>
+
+</html>
