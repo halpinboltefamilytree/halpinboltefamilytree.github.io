@@ -2,898 +2,1017 @@
 <html>
 
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Family Chart Relations</title>
 
-  
-  <script type="text/javascript" src="https://unpkg.com/basicprimitives@6.2.2/dist/primitives.js"></script>
-
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">  
 
 <style>
 
-.tree-titles-frame {
-	
-}
-.tree-scrollframe {
-	border: 1px dotted #dddddd;
+body {
+	font-family: 'Abril Fatface', serif;
+    font-size: 15px;
 }
 
-.tree-item {
-	position: relative;
-	overflow: auto;
-	text-align: center;
-	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
-	top: 5px; 
-	width: 100%; 
-	height: 28px; 
-	font-size: 12px;
+.person {
+	width: 200px;
+    height: 75px;
+    margin-top: 5px;
+    text-align: center;
 }
 
-.tree-corner-all {
+a {
+	text-decoration: none;
+    color: black;
+}
+
+.person-box, .person-box-no-hover {
+	border: 1px solid #dddddd;
+	background: #eeeeee;
+	color: #333333;
+    transition: 0.3s;
+}
+
+.person-box:hover {
+	color: #fff;
+	background-color:#97b19b;
+	border-color:#fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.person-box-no-hover:hover {
+    cursor: default;
+}
+
+.box-corner-all {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-khtml-border-radius: 4px;
 	border-radius: 4px;
 }
 
-.tree-item-frame {
-	border: 1px solid #dddddd;
-	background: #eeeeee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;
-	color: #333333;
-}
-
-.tree-title {
-	text-overflow: ellipsis;
-	-o-text-overflow: ellipsis;
-	white-space: nowrap;
-	font-size: 14px;
-	line-height: 16px;
-	color: white;
-}
-
-.tree-description {
-	font-size: 10px;
-	line-height: 12px;
-}
-
-.tree-cursor-frame {
-	border: 2px solid #fbd850;
-	background: #ffffff;
-	color: #eb8f00;
-}
-
-.tree-highlight-frame {
-	
-}
 
 </style>
 
-
-  <script type='text/javascript'>
-    var control;
-    document.addEventListener('DOMContentLoaded', function () {
-      var options = new primitives.FamConfig();
-
-      var items = [
-
-{ id: 100,
-  title: "Timothy Halpin",
-  description: ""
-},
-
-{ id: 101,
-  relativeItem: 100,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Margaret Burke",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 110,
-  relativeItem: 101,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Patrick Ryan",
-  description: ""
-},
-
-{ id: 111,
-  relativeItem: 110,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Mary Tinsley",
-  description: ""
-},
-
-
-/*--------------------------------------------------------------------*/
-
-{ id: 120,
-  relativeItem: 111,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Michael Moloney",
-  description: ""
-},
-
-{ id: 121,
-  relativeItem: 120,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Ann Mulcahy",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 130,
-  relativeItem: 121,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Malachy Dwyer",
-  description: ""
-},
-
-{ id: 131,
-  relativeItem: 130,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Jude Ryan",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 140,
-  relativeItem: 131,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Johann Carl Friedrich Bolte",
-  description: ""
-},
-
-{ id: 141,
-  relativeItem: 140,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Adelheid Desebrok",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 150,
-  relativeItem: 141,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "William Anderson",
-  description: ""
-},
-
-{ id: 151,
-  relativeItem: 150,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Sarah Jane McDonald",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 160,
-  relativeItem: 151,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Dennis O'Sullivan",
-  description: ""
-},
-
-{ id: 161,
-  relativeItem: 160,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Ellen Donovan",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 170,
-  relativeItem: 161,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Michael Mulquinn",
-  description: ""
-},
-
-{ id: 171,
-  relativeItem: 170,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Margaret Leahy",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 200,
-  parents: [100, 101],
-  title: "Mary Halpin",
-  description: ""
-},
-
-{ id: 201,
-  parents: [100, 101],
-  relativeItem: 200,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Patrick Halpin",
-  description: ""
-},
-
-{ id: 202,
-  parents: [100, 101],
-  relativeItem: 201,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Johanna Halpin",
-  description: ""
-},
-
-{ id: 203,
-  parents: [100, 101],
-  relativeItem: 202,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Timothy Halpin, Jr.",
-  description: ""
-},
-
-{ id: 204,
-  parents: [100, 101],
-  relativeItem: 203,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Thomas Halpin",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 210,
-  parents: [110, 111],
-  relativeItem: 204,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Alice Ryan",
-  description: ""
-},
-
-{ id: 211,
-  parents: [110, 111],
-  relativeItem: 210,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Ellen Ryan",
-  description: ""
-},
-
-{ id: 212,
-  parents: [110, 111],
-  relativeItem: 211,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "John Thomas Ryan",
-  description: ""
-},
-
-{ id: 213,
-  parents: [110, 111],
-  relativeItem: 212,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Mary Ryan",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 220,
-  parents: [120, 121],
-  relativeItem: 213,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "William Moloney",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 230,
-  parents: [130, 131],
-  relativeItem: 220,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Winifred Dwyer",
-  description: ""
-},
-
-{ id: 231,
-  parents: [130, 131],
-  relativeItem: 230,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Johanna Dwyer",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 240,
-  parents: [140, 141],
-  relativeItem: 231,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Catharine Bolte",
-  description: ""
-},
-
-{ id: 241,
-  parents: [140, 141],
-  relativeItem: 240,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Anna Bolte",
-  description: ""
-},
-
-{ id: 242,
-  parents: [140, 141],
-  relativeItem: 241,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Johann Christian Bolte",
-  description: ""
-},
-
-{ id: 243,
-  parents: [140, 141],
-  relativeItem: 242,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Christine Bolte",
-  description: ""
-},
-
-{ id: 244,
-  parents: [140, 141],
-  relativeItem: 243,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Adelheid Bolte",
-  description: ""
-},
-
-{ id: 245,
-  parents: [140, 141],
-  relativeItem: 244,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Friedrich Bolte",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 250,
-  parents: [150, 151],
-  relativeItem: 245,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Harriet Emmeline Anderson",
-  description: ""
-},
-
-{ id: 251,
-  parents: [150, 151],
-  relativeItem: 250,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Samuel Anderson",
-  description: ""
-},
-
-{ id: 252,
-  parents: [150, 151],
-  relativeItem: 251,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "William Edward Anderson",
-  description: ""
-},
-
-{ id: 253,
-  parents: [150, 151],
-  relativeItem: 252,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Charles Pinckney Anderson",
-  description: ""
-},
-
-{ id: 254,
-  parents: [150, 151],
-  relativeItem: 253,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Virginia L. Anderson",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 260,
-  parents: [160, 161],
-  relativeItem: 254,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "John O'Sullivan",
-  description: ""
-},
-
-{ id: 261,
-  parents: [160, 161],
-  relativeItem: 260,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Mary O'Sullivan",
-  description: ""
-},
-
-{ id: 262,
-  parents: [160, 161],
-  relativeItem: 261,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Ellen O'Sullivan",
-  description: ""
-},
-
-{ id: 263,
-  parents: [160, 161],
-  relativeItem: 262,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Johanna O'Sullivan",
-  description: ""
-},
-
-{ id: 264,
-  parents: [160, 161],
-  relativeItem: 263,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Daniel O'Sullivan",
-  description: ""
-},
-
-{ id: 265,
-  parents: [160, 161],
-  relativeItem: 264,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Thomas O'Sullivan",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 270,
-  parents: [170, 171],
-  relativeItem: 265,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Bridget Mulquinn",
-  description: ""
-},
-
-{ id: 271,
-  parents: [170, 171],
-  relativeItem: 270,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Katherine Mulquinn",
-  description: ""
-},
-
-{ id: 272,
-  parents: [170, 171],
-  relativeItem: 271,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Michael Mulquinn, Jr.",
-  description: ""
-},
-
-{ id: 273,
-  parents: [170, 171],
-  relativeItem: 272,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "William Mulquinn",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 300,
-  parents: [204, 210],
-  relativeItem: 301,
-  placementType: primitives.AdviserPlacementType.Left,
-  title: "Mary Ann Halpin",
-  description: ""
-},
-
-{ id: 301,
-  parents: [204, 210],
-  title: "Thomas James Halpin",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 310,
-  parents: [220, 230],
-  relativeItem: 301,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Anna Moloney",
-  description: ""
-},
-
-{ id: 311,
-  parents: [220, 230],
-  relativeItem: 310,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Michael William Moloney",
-  description: ""
-},
-
-{ id: 312,
-  parents: [220, 230],
-  relativeItem: 311,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Mary Catherine Moloney",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 320,
-  parents: [245, 250],
-  title: "Charles E. Bolte",
-  description: ""
-},
-
-{ id: 321,
-  parents: [245, 250],
-  relativeItem: 320,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Frederick Edgar Bolte",
-  description: ""
-},
-
-{ id: 322,
-  parents: [245, 250],
-  relativeItem: 321,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Sarah Jane Bolte",
-  description: ""
-},
-
-
-{ id: 323,
-  parents: [245, 250],
-  relativeItem: 322,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Hattie Anna Bolte",
-  description: ""
-},
-
-
-{ id: 324,
-  parents: [245, 250],
-  relativeItem: 323,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Mary Iola Bolte",
-  description: ""
-},
-
-
-{ id: 325,
-  parents: [245, 250],
-  relativeItem: 324,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Frank Buford Bolte",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 330,
-  parents: [265, 270],
-  relativeItem: 325,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Margaret Marie Sullivan",
-  description: ""
-},
-
-{ id: 331,
-  parents: [265, 270],
-  relativeItem: 330,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Denis Sullivan",
-  description: ""
-},
-
-{ id: 332,
-  parents: [265, 270],
-  relativeItem: 331,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "John L. Sullivan",
-  description: ""
-},
-
-{ id: 333,
-  parents: [265, 270],
-  relativeItem: 332,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Mary Ellen Sullivan",
-  description: ""
-},
-
-{ id: 334,
-  parents: [265, 270],
-  relativeItem: 333,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Thomas Michael Sullivan",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 400,
-  parents: [301, 310],
-  title: "William Michael Halpin",
-  description: "",
-},
-
-{ id: 401,
-  parents: [301, 310],
-  relativeItem: 400,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Thomas Patrick Halpin",
-  description: ""
-},
-
-{ id: 402,
-  parents: [301, 310],
-  relativeItem: 401,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "John Frank Halpin",
-  description: ""
-},
-
-{ id: 403,
-  parents: [301, 310],
-  relativeItem: 402,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "James Joseph Halpin",
-  description: ""
-},
-
-{ id: 404,
-  parents: [301, 310],
-  relativeItem: 403,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Clifford Edward Halpin",
-  description: ""
-},
-  { id: 4041,
-    spouses: [404],
-    relativeItem: 404,
-    placementType: primitives.AdviserPlacementType.Right,
-    title: "Lorene Virginia Faddis",
-    description: ""
-  },
-
-{ id: 405,
-  parents: [301, 310],
-  relativeItem: 4041,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Winifred Catherine Halpin",
-  description: ""
-},
-
-{ id: 406,
-  parents: [301, 310],
-  relativeItem: 405,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "George Alphonsus Halpin",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 410,
-  parents: [325, 330],
-  relativeItem: 406,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Margaret Claire Bolte",
-  description: ""
-},
-
-{ id: 411,
-  parents: [325, 330],
-  relativeItem: 410,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Frank Buford Bolte, Jr.",
-  description: ""
-},
-  { id: 4111,
-    spouses: [411],
-  	relativeItem: 411,
-  	placementType: primitives.AdviserPlacementType.Right,
-  	title: "June Rida Renfro",
-  	description: ""
-  },
-
-{ id: 412,
-  parents: [325, 330],
-  relativeItem: 4111,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Charles Gregory Bolte",
-  description: ""
-},
-  { id: 4121,
-    spouses: [412],
-  	relativeItem: 412,
-  	placementType: primitives.AdviserPlacementType.Right,
-  	title: "Vesta Virginia Miller",
-  	description: ""
-  },
-
-/*--------------------------------------------------------------------*/
-
-{ id: 500,
-  parents: [404, 4041],
-  title: "Thomas James Halpin",
-  description: ""
-},
-
-{ id: 501,
-  parents: [404, 4041],
-  relativeItem: 500,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Mary Ann Halpin",
-  description: ""
-},
-
-/*--------------------------------------------------------------------*/
-
-{ id: 510,
-  parents: [406, 410],
-  relativeItem: 5111,
-  placementType: primitives.AdviserPlacementType.Left,
-  title: "Margaret Ann Halpin",
-  description: "" },
-  { id: 5101,
-    spouses: [510],
-    relativeItem: 510,
-    placementType: primitives.AdviserPlacementType.Left,
-    title: "Milton Michael Meridier",
-    description: ""
-  },
-
-{ id: 511,
-  parents: [406, 410],
-  title: "Mary Claire Halpin",
-  description: "" },
-  { id: 5111,
-    spouses: [511],
-    relativeItem: 511,
-    placementType: primitives.AdviserPlacementType.Left,
-    title: "John Arthur Basten",
-    description: ""
-  },
-
-{ id: 512,
-  parents: [406, 410],
-  relativeItem: 511,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "George Alphonsus Halpin, Jr.",
-  description: "" },
-  { id: 5121,
-    spouses: [512],
-    relativeItem: 512,
-    placementType: primitives.AdviserPlacementType.Right,
-    title: "Arline Joyce Ruff",
-    description: ""
-  },
-
-
-{ id: 513,
-  parents: [406, 410],
-  relativeItem: 5131,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Jeanne Kathryn Halpin",
-  description: "" },
-  { id: 5131,
-    spouses: [513],
-    relativeItem: 5121,
-    placementType: primitives.AdviserPlacementType.Right,
-    title: "Cletus Calvert Canavan, Jr.",
-    description: ""
-  },
-
-
-{ id: 514,
-  parents: [406, 410],
-  relativeItem: 513,
-  placementType: primitives.AdviserPlacementType.Right,
-  title: "Michael James Halpin",
-  description: "" },
-  { id: 5141,
-    spouses: [514],
-    relativeItem: 514,
-    placementType: primitives.AdviserPlacementType.Right,
-    title: "Mary Ann Moran",
-    description: ""
-  },
-
-
-{ id: 515,
-  parents: [406, 410],
-  relativeItem: 514,
-  title: "Robert Franklin Halpin",
-  description: "" },
-  { id: 5151,
-    spouses: [515],
-    relativeItem: 515,
-    placementType: primitives.AdviserPlacementType.Right,
-    title: "Patricia Ann Coyne",
-    description: ""
-  },
-
-
-{ id: 516,
-  parents: [406, 410],
-  relativeItem: 5151,
-  title: "John Thomas Halpin",
-  description: "" },
-
-
-{ id: 517,
-  parents: [406, 410],
-  relativeItem: 516,
-  title: "Kathryn Ellen Halpin",
-  description: "" }
-
-
-
-      ];
-
-      options.pageFitMode = primitives.PageFitMode.AutoSize;
-      options.items = items;
-      options.cursorItem = 50;
-      options.linesWidth = 3;
-      options.linesColor = "black";
-      options.hasSelectorCheckbox = primitives.Enabled.False;
-      options.normalLevelShift = 50;
-      options.lineLevelShift = 50;
-      options.normalItemsInterval = 50;
-      options.lineItemsInterval = 50;
-      options.defaultTemplateName = "tree";
-      options.templates = [getTreeTemplate()];
-      options.onItemRender = onTemplateRender;
-      options.bevelSize = 1;
-      options.elbowDotSize = 1;
-
-      control = primitives.FamDiagram(document.getElementById("basicdiagram"), options);
-    });
-
-    function onTemplateRender(event, data) {
-      switch (data.renderingMode) {
-        case primitives.RenderingMode.Create:
-          /* Initialize template content here */
-          break;
-        case primitives.RenderingMode.Update:
-          /* Update template content here */
-          break;
-      }
-
-      var itemConfig = data.context;
-
-      if (data.templateName == "tree") {
-        var title = data.element.firstChild;
-        title.textContent = itemConfig.title;
-      }
-    }
-
-    function getTreeTemplate() {
-      var result = new primitives.TemplateConfig();
-      result.name = "tree";
-
-      result.itemSize = new primitives.Size(175, 60);
-
-
-      result.itemTemplate =
-        '<div class="tree-item tree-corner-all tree-item-frame" style="width:' + result.itemSize.width + 'px; height: ' + result.itemSize.height + 'px;">'
-        + '<div name="title" class="tree-item">'
-        + '</div>'
-        + '</div>';
-
-      return result;
-    }
-  </script>
 </head>
 
 <body>
-  <div id="basicdiagram" style="width: 1000px; height: 1000px;"></div>
+
+
+        <div class=" placeholder orgdiagram" style="position: absolute; overflow: hidden; left: 0px; top: 0px; width: 7575px; height: 975px; transform-origin: 0px 0px; transform: scale(1, 1);">
+
+            <div class=" Layer6 LayerConnector" style="position: fixed; width: 0px; height: 0px;"><svg viewBox="0 0 7538 975" style="width: 7538px; height: 975px;">
+            
+                    <path fill-opacity="0" stroke="black" stroke-width="3" stroke-opacity="1" stroke-dasharray="" d="
+M450.5 110.5
+L450.5 135.5
+L563.5 135.5
+L675.5 135.5
+L675.5 110.5 
+
+M563.5 135.5
+L563.5 160.5
+L563.5 185.5
+L563.5 185.5
+
+M563.5 185.5
+L563.5 210.5
+L563.5 235.5
+
+M563.5 210.5
+L788.5 210.5
+L788.5 235.5
+
+M788.5 210.5
+L1013.5 210.5
+L1013.5 235.5
+
+M563.5 210.5
+L338.5 210.5
+L338.5 235.5
+
+M338.5 210.5
+L113.5 210.5
+L113.5 235.5
+
+M1013.5 295.5
+L1013.5 320.5
+L1125.5 320.5
+L1238.5 320.5
+L1238.5 295.5
+
+M1125.5 320.5
+L1125.5 345.5
+L1125.5 370.5
+L1125.5 370.5
+
+M1238.5 235.5
+L1238.5 210.5
+L1463.5 210.5
+L1463.5 235.5
+
+M1463.5 210.5
+L1575.5 210.5
+L1688.5 210.5
+L1688.5 235.5
+
+M1688.5 210.5
+L1913.5 210.5
+L1913.5 235.5
+
+M1575.5 185.5
+L1575.5 160.5
+L1575.5 135.5
+L1688.5 135.5
+L1688.5 110.5
+
+M1125.5 370.5
+L1125.5 395.5
+L1238.5 395.5
+L1238.5 420.5
+
+M1125.5 395.5
+L1013.5 395.5
+L1013.5 420.5
+
+M1575.5 210.5
+L1575.5 185.5
+L1575.5 185.5
+
+M1238.5 480.5
+L1238.5 505.5
+L1659.5 505.5
+L2081.5 505.5
+L2081.5 480.5
+
+M1659.5 505.5
+L1659.5 530.5
+L1659.5 555.5
+L1659.5 555.5
+
+M1575.5 135.5
+L1463.5 135.5
+L1463.5 110.5
+
+M2081.5 420.5
+L2081.5 395.5
+L2306.5 395.5
+L2306.5 420.5
+
+M2306.5 395.5
+L2531.5 395.5
+L2531.5 420.5
+
+M1659.5 555.5
+L1659.5 580.5
+L3066.5 580.5
+L3066.5 605.5
+
+M2306.5 395.5
+L2306.5 370.5
+L2306.5 370.5
+
+M1659.5 580.5
+L1603.5 580.5
+L1603.5 605.5
+
+M1603.5 580.5
+L1153.5 580.5
+L1153.5 605.5
+
+M1153.5 580.5
+L928.5 580.5
+L928.5 605.5
+
+M928.5 580.5
+L703.5 580.5
+L703.5 605.5
+
+M703.5 580.5
+L478.5 580.5
+L478.5 605.5
+
+M478.5 580.5
+L253.5 580.5
+L253.5 605.5
+
+M2306.5 370.5
+L2306.5 345.5
+L2306.5 320.5
+L2475.5 320.5
+L2475.5 295.5
+
+M3066.5 665.5
+L3066.5 690.5
+L4092.5 690.5
+L5119.5 690.5
+L5119.5 665.5
+
+M1153.5 665.5
+L1153.5 690.5
+L1266.5 690.5
+L1378.5 690.5
+L1378.5 665.5
+
+M2306.5 320.5
+L2138.5 320.5
+L2138.5 295.5
+
+M4092.5 690.5
+L4092.5 715.5
+L4092.5 740.5
+L4092.5 740.5
+
+M1266.5 690.5
+L1266.5 715.5
+L1266.5 740.5
+L1266.5 740.5
+
+M2475.5 235.5
+L2475.5 210.5
+L2588.5 210.5
+L2700.5 210.5
+L2700.5 235.5
+
+M2138.5 235.5
+L2138.5 210.5
+L2138.5 185.5
+L2138.5 185.5
+
+M5119.5 605.5
+L5119.5 580.5
+L5344.5 580.5
+L5344.5 605.5
+
+M5344.5 580.5
+L5456.5 580.5
+L5794.5 580.5
+L5794.5 605.5
+
+M4092.5 740.5
+L4092.5 765.5
+L4092.5 790.5
+
+M4092.5 765.5
+L4317.5 765.5
+L4317.5 790.5
+
+M4317.5 765.5
+L4767.5 765.5
+L4767.5 790.5
+
+M4767.5 765.5
+L5217.5 765.5
+L5217.5 790.5
+
+M5217.5 765.5
+L5442.5 765.5
+L5442.5 790.5
+
+M2588.5 210.5
+L2588.5 185.5
+L2588.5 185.5
+
+M2138.5 185.5
+L2138.5 160.5
+L2138.5 135.5
+L2250.5 135.5
+L2250.5 110.5
+
+M4092.5 765.5
+L3417.5 765.5
+L3417.5 790.5
+
+M3417.5 765.5
+L3192.5 765.5
+L3192.5 790.5
+
+M3192.5 765.5
+L2742.5 765.5
+L2742.5 790.5
+
+M1266.5 740.5
+L1266.5 765.5
+L1378.5 765.5
+L1378.5 790.5
+
+M5344.5 665.5
+L5344.5 690.5
+L5456.5 690.5
+L5569.5 690.5
+L5569.5 665.5
+
+M5456.5 580.5
+L5456.5 555.5
+L5456.5 555.5
+
+M4092.5 850.5
+L4092.5 875.5
+L3980.5 875.5
+L3867.5 875.5
+L3867.5 850.5
+
+M1266.5 765.5
+L1153.5 765.5
+L1153.5 790.5
+
+M2588.5 185.5
+L2588.5 160.5
+L2588.5 135.5
+L2700.5 135.5
+L2700.5 110.5
+
+M4317.5 850.5
+L4317.5 875.5
+L4430.5 875.5
+L4542.5 875.5
+L4542.5 850.5
+
+M3417.5 850.5
+L3417.5 875.5
+L3530.5 875.5
+L3642.5 875.5
+L3642.5 850.5
+
+M2138.5 135.5
+L2025.5 135.5
+L2025.5 110.5
+
+M5794.5 665.5
+L5794.5 690.5
+L5906.5 690.5
+L6019.5 690.5
+L6019.5 665.5
+
+M5456.5 555.5
+L5456.5 530.5
+L5456.5 505.5
+L6188.5 505.5
+L6188.5 480.5
+
+M4767.5 850.5
+L4767.5 875.5
+L4880.5 875.5
+L4992.5 875.5
+L4992.5 850.5
+
+M3192.5 850.5
+L3192.5 875.5
+L3080.5 875.5
+L2967.5 875.5
+L2967.5 850.5
+
+M2588.5 135.5
+L2475.5 135.5
+L2475.5 110.5
+
+M2742.5 850.5
+L2742.5 875.5
+L2173.5 875.5
+L1603.5 875.5
+L1603.5 850.5
+
+M5456.5 505.5
+L4725.5 505.5
+L4725.5 480.5
+
+M6188.5 420.5
+L6188.5 395.5
+L6413.5 395.5
+L6413.5 420.5
+
+M6413.5 395.5
+L6638.5 395.5
+L6638.5 420.5
+
+M6638.5 395.5
+L6863.5 395.5
+L6863.5 420.5
+
+M6863.5 395.5
+L7088.5 395.5
+L7088.5 420.5
+
+M6638.5 370.5
+L6638.5 345.5
+L6638.5 320.5
+L6750.5 320.5
+L6750.5 295.5
+
+M4725.5 420.5
+L4725.5 395.5
+L4500.5 395.5
+L4500.5 420.5
+
+M4500.5 395.5
+L4275.5 395.5
+L4275.5 420.5
+
+M4275.5 395.5
+L4163.5 395.5
+L4050.5 395.5
+L4050.5 420.5
+
+M4050.5 395.5
+L3825.5 395.5
+L3825.5 420.5
+
+M3825.5 395.5
+L3600.5 395.5
+L3600.5 420.5
+
+M6638.5 395.5
+L6638.5 370.5
+L6638.5 370.5
+
+M4163.5 395.5
+L4163.5 370.5
+L4163.5 370.5
+
+M4163.5 370.5
+L4163.5 345.5
+L4163.5 320.5
+L4275.5 320.5
+L4275.5 295.5
+
+M6638.5 320.5
+L6525.5 320.5
+L6525.5 295.5
+
+M4163.5 320.5
+L4050.5 320.5
+L4050.5 295.5
+
+M6750.5 235.5
+L6750.5 210.5
+L6975.5 210.5
+L6975.5 235.5
+
+M6975.5 210.5
+L7088.5 210.5
+L7200.5 210.5
+L7200.5 235.5
+
+M7200.5 210.5
+L7425.5 210.5
+L7425.5 235.5
+
+M7088.5 185.5
+L7088.5 160.5
+L7088.5 135.5
+L7200.5 135.5
+L7200.5 110.5
+
+M6525.5 235.5
+L6525.5 210.5
+L6300.5 210.5
+L6300.5 235.5
+
+M6300.5 210.5
+L6075.5 210.5
+L6075.5 235.5
+
+M6075.5 210.5
+L5963.5 210.5
+L5850.5 210.5
+L5850.5 235.5
+
+M5850.5 210.5
+L5625.5 210.5
+L5625.5 235.5
+
+M5625.5 210.5
+L5400.5 210.5
+L5400.5 235.5
+
+M4275.5 235.5
+L4275.5 210.5
+L4500.5 210.5
+L4500.5 235.5
+
+M4500.5 210.5
+L4725.5 210.5
+L4725.5 235.5
+
+M4725.5 210.5
+L4950.5 210.5
+L4950.5 235.5
+
+M4950.5 210.5
+L5175.5 210.5
+L5175.5 235.5
+
+M4725.5 185.5
+L4725.5 160.5
+L4725.5 135.5
+L4838.5 135.5
+L4838.5 110.5
+
+M4050.5 235.5
+L4050.5 210.5
+L3825.5 210.5
+L3825.5 235.5
+
+M3825.5 210.5
+L3600.5 210.5
+L3600.5 235.5
+
+M3600.5 210.5
+L3488.5 210.5
+L3375.5 210.5
+L3375.5 235.5
+
+M3375.5 210.5
+L3150.5 210.5
+L3150.5 235.5
+
+M3150.5 210.5
+L2925.5 210.5
+L2925.5 235.5
+
+M7088.5 210.5
+L7088.5 185.5
+L7088.5 185.5
+
+M5963.5 210.5
+L5963.5 185.5
+L5963.5 185.5
+
+M4725.5 210.5
+L4725.5 185.5
+L4725.5 185.5
+
+M3488.5 210.5
+L3488.5 185.5
+L3488.5 185.5
+
+M5963.5 185.5
+L5963.5 160.5
+L5963.5 135.5
+L6075.5 135.5
+L6075.5 110.5
+
+M7088.5 135.5
+L6975.5 135.5
+L6975.5 110.5
+
+M3488.5 185.5
+L3488.5 160.5
+L3488.5 135.5
+L3600.5 135.5
+L3600.5 110.5
+
+M5963.5 135.5
+L5850.5 135.5
+L5850.5 110.5
+
+M4725.5 135.5
+L4613.5 135.5
+L4613.5 110.5
+
+M3488.5 135.5
+L3375.5 135.5
+L3375.5 110.5"></path>
+
+                    <path fill="black" fill-opacity="1" stroke="black" stroke-width="0" stroke-opacity="1" stroke-dasharray="" d="M562.5 135.5A1 1 0 0 0 564.5 135.5A1 1 0 0 0 562.5 135.5M562.5 210.5A1 1 0 0 0 564.5 210.5A1 1 0 0 0 562.5 210.5M787.5 210.5A1 1 0 0 0 789.5 210.5A1 1 0 0 0 787.5 210.5M337.5 210.5A1 1 0 0 0 339.5 210.5A1 1 0 0 0 337.5 210.5M1124.5 320.5A1 1 0 0 0 1126.5 320.5A1 1 0 0 0 1124.5 320.5M1462.5 210.5A1 1 0 0 0 1464.5 210.5A1 1 0 0 0 1462.5 210.5M1574.5 210.5A1 1 0 0 0 1576.5 210.5A1 1 0 0 0 1574.5 210.5M1124.5 395.5A1 1 0 0 0 1126.5 395.5A1 1 0 0 0 1124.5 395.5M1687.5 210.5A1 1 0 0 0 1689.5 210.5A1 1 0 0 0 1687.5 210.5M1658.5 505.5A1 1 0 0 0 1660.5 505.5A1 1 0 0 0 1658.5 505.5M1574.5 135.5A1 1 0 0 0 1576.5 135.5A1 1 0 0 0 1574.5 135.5M2305.5 395.5A1 1 0 0 0 2307.5 395.5A1 1 0 0 0 2305.5 395.5M1658.5 580.5A1 1 0 0 0 1660.5 580.5A1 1 0 0 0 1658.5 580.5M1602.5 580.5A1 1 0 0 0 1604.5 580.5A1 1 0 0 0 1602.5 580.5M1152.5 580.5A1 1 0 0 0 1154.5 580.5A1 1 0 0 0 1152.5 580.5M4091.5 690.5A1 1 0 0 0 4093.5 690.5A1 1 0 0 0 4091.5 690.5M927.5 580.5A1 1 0 0 0 929.5 580.5A1 1 0 0 0 927.5 580.5M2305.5 320.5A1 1 0 0 0 2307.5 320.5A1 1 0 0 0 2305.5 320.5M1265.5 690.5A1 1 0 0 0 1267.5 690.5A1 1 0 0 0 1265.5 690.5M702.5 580.5A1 1 0 0 0 704.5 580.5A1 1 0 0 0 702.5 580.5M477.5 580.5A1 1 0 0 0 479.5 580.5A1 1 0 0 0 477.5 580.5M2587.5 210.5A1 1 0 0 0 2589.5 210.5A1 1 0 0 0 2587.5 210.5M5343.5 580.5A1 1 0 0 0 5345.5 580.5A1 1 0 0 0 5343.5 580.5M5455.5 580.5A1 1 0 0 0 5457.5 580.5A1 1 0 0 0 5455.5 580.5M4091.5 765.5A1 1 0 0 0 4093.5 765.5A1 1 0 0 0 4091.5 765.5M4316.5 765.5A1 1 0 0 0 4318.5 765.5A1 1 0 0 0 4316.5 765.5M3416.5 765.5A1 1 0 0 0 3418.5 765.5A1 1 0 0 0 3416.5 765.5M1265.5 765.5A1 1 0 0 0 1267.5 765.5A1 1 0 0 0 1265.5 765.5M5455.5 690.5A1 1 0 0 0 5457.5 690.5A1 1 0 0 0 5455.5 690.5M3979.5 875.5A1 1 0 0 0 3981.5 875.5A1 1 0 0 0 3979.5 875.5M4766.5 765.5A1 1 0 0 0 4768.5 765.5A1 1 0 0 0 4766.5 765.5M3191.5 765.5A1 1 0 0 0 3193.5 765.5A1 1 0 0 0 3191.5 765.5M2137.5 135.5A1 1 0 0 0 2139.5 135.5A1 1 0 0 0 2137.5 135.5M4429.5 875.5A1 1 0 0 0 4431.5 875.5A1 1 0 0 0 4429.5 875.5M5216.5 765.5A1 1 0 0 0 5218.5 765.5A1 1 0 0 0 5216.5 765.5M3529.5 875.5A1 1 0 0 0 3531.5 875.5A1 1 0 0 0 3529.5 875.5M2587.5 135.5A1 1 0 0 0 2589.5 135.5A1 1 0 0 0 2587.5 135.5M5905.5 690.5A1 1 0 0 0 5907.5 690.5A1 1 0 0 0 5905.5 690.5M4879.5 875.5A1 1 0 0 0 4881.5 875.5A1 1 0 0 0 4879.5 875.5M3079.5 875.5A1 1 0 0 0 3081.5 875.5A1 1 0 0 0 3079.5 875.5M5455.5 505.5A1 1 0 0 0 5457.5 505.5A1 1 0 0 0 5455.5 505.5M2172.5 875.5A1 1 0 0 0 2174.5 875.5A1 1 0 0 0 2172.5 875.5M6412.5 395.5A1 1 0 0 0 6414.5 395.5A1 1 0 0 0 6412.5 395.5M4499.5 395.5A1 1 0 0 0 4501.5 395.5A1 1 0 0 0 4499.5 395.5M6637.5 395.5A1 1 0 0 0 6639.5 395.5A1 1 0 0 0 6637.5 395.5M4274.5 395.5A1 1 0 0 0 4276.5 395.5A1 1 0 0 0 4274.5 395.5M4162.5 395.5A1 1 0 0 0 4164.5 395.5A1 1 0 0 0 4162.5 395.5M6862.5 395.5A1 1 0 0 0 6864.5 395.5A1 1 0 0 0 6862.5 395.5M4049.5 395.5A1 1 0 0 0 4051.5 395.5A1 1 0 0 0 4049.5 395.5M3824.5 395.5A1 1 0 0 0 3826.5 395.5A1 1 0 0 0 3824.5 395.5M6637.5 320.5A1 1 0 0 0 6639.5 320.5A1 1 0 0 0 6637.5 320.5M4162.5 320.5A1 1 0 0 0 4164.5 320.5A1 1 0 0 0 4162.5 320.5M6974.5 210.5A1 1 0 0 0 6976.5 210.5A1 1 0 0 0 6974.5 210.5M6299.5 210.5A1 1 0 0 0 6301.5 210.5A1 1 0 0 0 6299.5 210.5M7087.5 210.5A1 1 0 0 0 7089.5 210.5A1 1 0 0 0 7087.5 210.5M6074.5 210.5A1 1 0 0 0 6076.5 210.5A1 1 0 0 0 6074.5 210.5M4499.5 210.5A1 1 0 0 0 4501.5 210.5A1 1 0 0 0 4499.5 210.5M3824.5 210.5A1 1 0 0 0 3826.5 210.5A1 1 0 0 0 3824.5 210.5M5962.5 210.5A1 1 0 0 0 5964.5 210.5A1 1 0 0 0 5962.5 210.5M4724.5 210.5A1 1 0 0 0 4726.5 210.5A1 1 0 0 0 4724.5 210.5M3599.5 210.5A1 1 0 0 0 3601.5 210.5A1 1 0 0 0 3599.5 210.5M7199.5 210.5A1 1 0 0 0 7201.5 210.5A1 1 0 0 0 7199.5 210.5M3487.5 210.5A1 1 0 0 0 3489.5 210.5A1 1 0 0 0 3487.5 210.5M5849.5 210.5A1 1 0 0 0 5851.5 210.5A1 1 0 0 0 5849.5 210.5M4949.5 210.5A1 1 0 0 0 4951.5 210.5A1 1 0 0 0 4949.5 210.5M5624.5 210.5A1 1 0 0 0 5626.5 210.5A1 1 0 0 0 5624.5 210.5M3374.5 210.5A1 1 0 0 0 3376.5 210.5A1 1 0 0 0 3374.5 210.5M7087.5 135.5A1 1 0 0 0 7089.5 135.5A1 1 0 0 0 7087.5 135.5M3149.5 210.5A1 1 0 0 0 3151.5 210.5A1 1 0 0 0 3149.5 210.5M5962.5 135.5A1 1 0 0 0 5964.5 135.5A1 1 0 0 0 5962.5 135.5M4724.5 135.5A1 1 0 0 0 4726.5 135.5A1 1 0 0 0 4724.5 135.5M3487.5 135.5A1 1 0 0 0 3489.5 135.5A1 1 0 0 0 3487.5 135.5"></path>
+                </svg>
+            </div>
+                
+                
+                
+
+            	
+                <div class="person box-corner-all person-box" style="top: 42px; left: 362.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Timothy Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 587.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Margaret Burke</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 42px; left: 1375px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Patrick Ryan
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 1600px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Mary Tinsley</div>
+                </div>
+                
+                <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 1937.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Michael Moloney</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 25px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">                   
+                    Mary Halpin
+                    <br>
+                    1833-1915
+                    </div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 250px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Patrick Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 475px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Johanna Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 700px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Timothy Halpin, Jr.</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 925px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Thomas Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 1150px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Alice Ryan</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 1375px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Ellen Ryan</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 1600px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    John Thomas Ryan</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 227px; left: 1825px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Mary Ryan</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 412px; left: 925px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Mary Ann Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 412px; left: 1150px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Thomas James Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 597px; left: 165.625px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    William Michael Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 597px; left: 390.625px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Thomas Patrick Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 597px; left: 615.625px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    John Frank Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 597px; left: 840.625px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    James Joseph Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 597px; left: 1065.62px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Clifford Edward Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 597px; left: 1515.62px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Winifred Catherine Halpin</div>
+                </div>
+                
+                <div class="person box-corner-all person-box" style="top: 597px; left: 1290.62px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+                    <div class="person">
+                    Lorene Virginia Faddis</div>
+                </div>
+               
+                <div class="person box-corner-all person-box" style="top: 782px; left: 1515.62px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a><div class="person">
+                    Milton Michael Meridier</div></div>
+                
+    <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 2162.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Ann Mulcahy</div>
+    </div>
+    <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 2387.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Malachy Dwyer</div>
+    </div>
+    <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 2612.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Jude Ryan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 2050px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    William Moloney</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 2387.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Winifred Dwyer</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 2612.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Johanna Dwyer</div>
+    </div>
+
+    <div class="person box-corner-all person-box" style="top: 412px; left: 1993.75px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Anna Moloney</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 2218.75px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Michael William Moloney</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 2443.75px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Mary Catherine Moloney</div>
+    </div>
+
+   <div class="person box-corner-all person-box" style="top: 42px; left: 3287.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Johann Carl Friedrich Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 42px; left: 3512.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Adelheid Desebrok</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 2837.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Catharine Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 3062.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Anna Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 3287.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Johann Christian Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 3512.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Christine Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 3737.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Adelheid Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 3512.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Charles E. Bolte</div>
+    </div>
+
+    <div class="person box-corner-all person-box" style="top: 412px; left: 3737.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Frederick Edgar Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 597px; left: 2978.12px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    George Alphonsus Halpin</div>
+    </div>
+    
+        <div class="person box-corner-all person-box" style="top: 42px; left: 4525px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    William Anderson</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 42px; left: 4750px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Sarah Jane McDonald</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 3962.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Friedrich Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 4187.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Harriet Emmeline Anderson</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 4412.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Samuel Anderson</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 4637.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    William Edward Anderson</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 4862.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Charles Pinckney Anderson</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 3962.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Sarah Jane Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 4187.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Hattie Anna Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 4412.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Mary Iola Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 4637.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Frank Buford Bolte</div>
+    </div>
+    
+        <div class="person box-corner-all person-box" style="top: 42px; left: 5762.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Dennis O'Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 42px; left: 5987.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Ellen Donovan</div>
+    </div>
+
+    <div class="person box-corner-all person-box" style="top: 227px; left: 5087.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Virginia L. Anderson</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 5312.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    John O'Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 5537.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Mary O'Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 5762.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Ellen O'Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 5987.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Johanna O'Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 597px; left: 5031.25px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Margaret Claire Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 597px; left: 5256.25px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Frank Buford Bolte, Jr.</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 597px; left: 5706.25px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Charles Gregory Bolte</div>
+    </div>
+    <div class="person box-corner-all person-box-no-hover" style="top: 597px; left: 5481.25px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    June Rida Renfro</div>
+    </div>
+    <div class="person box-corner-all person-box-no-hover" style="top: 597px; left: 5931.25px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Vesta Virginia Miller</div>
+    </div>
+
+    <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 6887.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Michael Mulquinn</div>
+    </div>
+    <div class="person box-corner-all person-box-no-hover" style="top: 42px; left: 7112.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Margaret Leahy</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 6212.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Daniel O'Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 6437.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Thomas O'Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 6662.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Bridget Mulquinn</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 6887.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Katherine Mulquinn</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 227px; left: 7112.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Michael Mulquinn, Jr.</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 6100px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Margaret Marie Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 6325px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Dennis Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 6550px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    John L. Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 6775px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Mary Ellen Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 7000px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Thomas Michael Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 6775px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Mary Ellen Sullivan</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 412px; left: 7000px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Thomas Michael Sullivan</div>
+    </div>
+
+<div class="person box-corner-all person-box" style="top: 227px; left: 7337.5px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+    <div class="person">
+                    William Mulquinn</div>
+</div>
+
+    <div class="person box-corner-all person-box" style="top: 782px; left: 3104.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Mary Claire Halpin</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 3329.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    George Alphonsus Halpin, Jr.</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 2879.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    John Arthur Basten</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 3554.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Arline Joyce Ruff</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 3779.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Cletus Calvert Canavan, Jr.</div>
+    </div>
+
+<div class="person box-corner-all person-box" style="top: 782px; left: 2654.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+    <div class="person">
+                    Margaret Ann Halpin</div>
+</div>
+
+
+    <div class="person box-corner-all person-box" style="top: 782px; left: 4004.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Jeanne Kathryn Halpin</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 4229.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Michael James Halpin</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 4679.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Robert Franklin Halpin</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 4454.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Mary Ann Moran</div>
+    </div>
+    <div class="person box-corner-all person-box" style="top: 782px; left: 4904.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+        <div class="person">
+                    Patricia Ann Coyne</div>
+    </div>
+
+
+<div class="person box-corner-all person-box" style="top: 782px; left: 5129.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+    <div class="person">
+                    John Thomas Halpin</div>
+</div>
+
+<div class="person box-corner-all person-box" style="top: 782px; left: 5354.69px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+    <div class="person">
+                    Kathryn Ellen Halpin</div>
+</div>
+
+<div class="person box-corner-all person-box" style="top: 782px; left: 1065.62px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+    <div class="person">
+                    Thomas James Halpin</div>
+</div>
+<div class="person box-corner-all person-box" style="top: 782px; left: 1290.62px; position: fixed; padding: 0px; margin: 0px; visibility: inherit;"><a href=""></a>
+    <div class="person">
+                    Mary Ann Halpin</div>
+</div>
+
+
+    </div>
+
 </body>
 
 </html>
