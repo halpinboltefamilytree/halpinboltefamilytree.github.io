@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Family Chart Relations</title>
+
+  
+  <script type="text/javascript" src="https://unpkg.com/basicprimitives@6.2.2/dist/primitives.js"></script>
+
+
+<style>
+
+.tree-titles-frame {
+	
+}
+.tree-scrollframe {
+	border: 1px dotted #dddddd;
+}
+
+.tree-item {
+	position: relative;
+	overflow: auto;
+	text-align: center;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	top: 5px; 
+	width: 100%; 
+	height: 28px; 
+	font-size: 12px;
+}
+
+.tree-corner-all {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.tree-item-frame {
+	border: 1px solid #dddddd;
+	background: #eeeeee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;
+	color: #333333;
+}
+
+.tree-title {
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
+	line-height: 16px;
+	color: white;
+}
+
+.tree-description {
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.tree-cursor-frame {
+	border: 2px solid #fbd850;
+	background: #ffffff;
+	color: #eb8f00;
+}
+
+.tree-highlight-frame {
+	
+}
+
+</style>
+
+
+  <script type='text/javascript'>
+    var control;
+    document.addEventListener('DOMContentLoaded', function () {
+      var options = new primitives.FamConfig();
+
+      var items = [
+
+{ id: 100,
+  title: "Timothy Halpin",
+  description: ""
+},
+
+{ id: 101,
+  relativeItem: 100,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Margaret Burke",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 110,
+  relativeItem: 101,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Patrick Ryan",
+  description: ""
+},
+
+{ id: 111,
+  relativeItem: 110,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Mary Tinsley",
+  description: ""
+},
+
+
+/*--------------------------------------------------------------------*/
+
+{ id: 120,
+  relativeItem: 111,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Michael Moloney",
+  description: ""
+},
+
+{ id: 121,
+  relativeItem: 120,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Ann Mulcahy",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 130,
+  relativeItem: 121,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Malachy Dwyer",
+  description: ""
+},
+
+{ id: 131,
+  relativeItem: 130,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Jude Ryan",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 140,
+  relativeItem: 131,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Johann Carl Friedrich Bolte",
+  description: ""
+},
+
+{ id: 141,
+  relativeItem: 140,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Adelheid Desebrok",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 150,
+  relativeItem: 141,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "William Anderson",
+  description: ""
+},
+
+{ id: 151,
+  relativeItem: 150,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Sarah Jane McDonald",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 160,
+  relativeItem: 151,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Dennis O'Sullivan",
+  description: ""
+},
+
+{ id: 161,
+  relativeItem: 160,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Ellen Donovan",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 170,
+  relativeItem: 161,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Michael Mulquinn",
+  description: ""
+},
+
+{ id: 171,
+  relativeItem: 170,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Margaret Leahy",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 200,
+  parents: [100, 101],
+  title: "Mary Halpin",
+  description: ""
+},
+
+{ id: 201,
+  parents: [100, 101],
+  relativeItem: 200,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Patrick Halpin",
+  description: ""
+},
+
+{ id: 202,
+  parents: [100, 101],
+  relativeItem: 201,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Johanna Halpin",
+  description: ""
+},
+
+{ id: 203,
+  parents: [100, 101],
+  relativeItem: 202,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Timothy Halpin, Jr.",
+  description: ""
+},
+
+{ id: 204,
+  parents: [100, 101],
+  relativeItem: 203,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Thomas Halpin",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 210,
+  parents: [110, 111],
+  relativeItem: 204,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Alice Ryan",
+  description: ""
+},
+
+{ id: 211,
+  parents: [110, 111],
+  relativeItem: 210,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Ellen Ryan",
+  description: ""
+},
+
+{ id: 212,
+  parents: [110, 111],
+  relativeItem: 211,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "John Thomas Ryan",
+  description: ""
+},
+
+{ id: 213,
+  parents: [110, 111],
+  relativeItem: 212,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Mary Ryan",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 220,
+  parents: [120, 121],
+  relativeItem: 213,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "William Moloney",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 230,
+  parents: [130, 131],
+  relativeItem: 220,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Winifred Dwyer",
+  description: ""
+},
+
+{ id: 231,
+  parents: [130, 131],
+  relativeItem: 230,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Johanna Dwyer",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 240,
+  parents: [140, 141],
+  relativeItem: 231,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Catharine Bolte",
+  description: ""
+},
+
+{ id: 241,
+  parents: [140, 141],
+  relativeItem: 240,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Anna Bolte",
+  description: ""
+},
+
+{ id: 242,
+  parents: [140, 141],
+  relativeItem: 241,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Johann Christian Bolte",
+  description: ""
+},
+
+{ id: 243,
+  parents: [140, 141],
+  relativeItem: 242,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Christine Bolte",
+  description: ""
+},
+
+{ id: 244,
+  parents: [140, 141],
+  relativeItem: 243,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Adelheid Bolte",
+  description: ""
+},
+
+{ id: 245,
+  parents: [140, 141],
+  relativeItem: 244,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Friedrich Bolte",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 250,
+  parents: [150, 151],
+  relativeItem: 245,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Harriet Emmeline Anderson",
+  description: ""
+},
+
+{ id: 251,
+  parents: [150, 151],
+  relativeItem: 250,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Samuel Anderson",
+  description: ""
+},
+
+{ id: 252,
+  parents: [150, 151],
+  relativeItem: 251,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "William Edward Anderson",
+  description: ""
+},
+
+{ id: 253,
+  parents: [150, 151],
+  relativeItem: 252,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Charles Pinckney Anderson",
+  description: ""
+},
+
+{ id: 254,
+  parents: [150, 151],
+  relativeItem: 253,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Virginia L. Anderson",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 260,
+  parents: [160, 161],
+  relativeItem: 254,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "John O'Sullivan",
+  description: ""
+},
+
+{ id: 261,
+  parents: [160, 161],
+  relativeItem: 260,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Mary O'Sullivan",
+  description: ""
+},
+
+{ id: 262,
+  parents: [160, 161],
+  relativeItem: 261,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Ellen O'Sullivan",
+  description: ""
+},
+
+{ id: 263,
+  parents: [160, 161],
+  relativeItem: 262,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Johanna O'Sullivan",
+  description: ""
+},
+
+{ id: 264,
+  parents: [160, 161],
+  relativeItem: 263,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Daniel O'Sullivan",
+  description: ""
+},
+
+{ id: 265,
+  parents: [160, 161],
+  relativeItem: 264,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Thomas O'Sullivan",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 270,
+  parents: [170, 171],
+  relativeItem: 265,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Bridget Mulquinn",
+  description: ""
+},
+
+{ id: 271,
+  parents: [170, 171],
+  relativeItem: 270,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Katherine Mulquinn",
+  description: ""
+},
+
+{ id: 272,
+  parents: [170, 171],
+  relativeItem: 271,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Michael Mulquinn, Jr.",
+  description: ""
+},
+
+{ id: 273,
+  parents: [170, 171],
+  relativeItem: 272,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "William Mulquinn",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 300,
+  parents: [204, 210],
+  relativeItem: 301,
+  placementType: primitives.AdviserPlacementType.Left,
+  title: "Mary Ann Halpin",
+  description: ""
+},
+
+{ id: 301,
+  parents: [204, 210],
+  title: "Thomas James Halpin",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 310,
+  parents: [220, 230],
+  relativeItem: 301,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Anna Moloney",
+  description: ""
+},
+
+{ id: 311,
+  parents: [220, 230],
+  relativeItem: 310,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Michael William Moloney",
+  description: ""
+},
+
+{ id: 312,
+  parents: [220, 230],
+  relativeItem: 311,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Mary Catherine Moloney",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 320,
+  parents: [245, 250],
+  title: "Charles E. Bolte",
+  description: ""
+},
+
+{ id: 321,
+  parents: [245, 250],
+  relativeItem: 320,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Frederick Edgar Bolte",
+  description: ""
+},
+
+{ id: 322,
+  parents: [245, 250],
+  relativeItem: 321,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Sarah Jane Bolte",
+  description: ""
+},
+
+
+{ id: 323,
+  parents: [245, 250],
+  relativeItem: 322,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Hattie Anna Bolte",
+  description: ""
+},
+
+
+{ id: 324,
+  parents: [245, 250],
+  relativeItem: 323,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Mary Iola Bolte",
+  description: ""
+},
+
+
+{ id: 325,
+  parents: [245, 250],
+  relativeItem: 324,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Frank Buford Bolte",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 330,
+  parents: [265, 270],
+  relativeItem: 325,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Margaret Marie Sullivan",
+  description: ""
+},
+
+{ id: 331,
+  parents: [265, 270],
+  relativeItem: 330,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Denis Sullivan",
+  description: ""
+},
+
+{ id: 332,
+  parents: [265, 270],
+  relativeItem: 331,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "John L. Sullivan",
+  description: ""
+},
+
+{ id: 333,
+  parents: [265, 270],
+  relativeItem: 332,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Mary Ellen Sullivan",
+  description: ""
+},
+
+{ id: 334,
+  parents: [265, 270],
+  relativeItem: 333,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Thomas Michael Sullivan",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 400,
+  parents: [301, 310],
+  title: "William Michael Halpin",
+  description: "",
+},
+
+{ id: 401,
+  parents: [301, 310],
+  relativeItem: 400,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Thomas Patrick Halpin",
+  description: ""
+},
+
+{ id: 402,
+  parents: [301, 310],
+  relativeItem: 401,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "John Frank Halpin",
+  description: ""
+},
+
+{ id: 403,
+  parents: [301, 310],
+  relativeItem: 402,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "James Joseph Halpin",
+  description: ""
+},
+
+{ id: 404,
+  parents: [301, 310],
+  relativeItem: 403,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Clifford Edward Halpin",
+  description: ""
+},
+  { id: 4041,
+    spouses: [404],
+    relativeItem: 404,
+    placementType: primitives.AdviserPlacementType.Right,
+    title: "Lorene Virginia Faddis",
+    description: ""
+  },
+
+{ id: 405,
+  parents: [301, 310],
+  relativeItem: 4041,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Winifred Catherine Halpin",
+  description: ""
+},
+
+{ id: 406,
+  parents: [301, 310],
+  relativeItem: 405,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "George Alphonsus Halpin",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 410,
+  parents: [325, 330],
+  relativeItem: 406,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Margaret Claire Bolte",
+  description: ""
+},
+
+{ id: 411,
+  parents: [325, 330],
+  relativeItem: 410,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Frank Buford Bolte, Jr.",
+  description: ""
+},
+  { id: 4111,
+    spouses: [411],
+  	relativeItem: 411,
+  	placementType: primitives.AdviserPlacementType.Right,
+  	title: "June Rida Renfro",
+  	description: ""
+  },
+
+{ id: 412,
+  parents: [325, 330],
+  relativeItem: 4111,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Charles Gregory Bolte",
+  description: ""
+},
+  { id: 4121,
+    spouses: [412],
+  	relativeItem: 412,
+  	placementType: primitives.AdviserPlacementType.Right,
+  	title: "Vesta Virginia Miller",
+  	description: ""
+  },
+
+/*--------------------------------------------------------------------*/
+
+{ id: 500,
+  parents: [404, 4041],
+  title: "Thomas James Halpin",
+  description: ""
+},
+
+{ id: 501,
+  parents: [404, 4041],
+  relativeItem: 500,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Mary Ann Halpin",
+  description: ""
+},
+
+/*--------------------------------------------------------------------*/
+
+{ id: 510,
+  parents: [406, 410],
+  relativeItem: 5111,
+  placementType: primitives.AdviserPlacementType.Left,
+  title: "Margaret Ann Halpin",
+  description: "" },
+  { id: 5101,
+    spouses: [510],
+    title: "Milton Michael Meridier",
+    description: ""
+  },
+
+{ id: 511,
+  parents: [406, 410],
+  title: "Mary Claire Halpin",
+  description: "" },
+  { id: 5111,
+    spouses: [511],
+    relativeItem: 511,
+    placementType: primitives.AdviserPlacementType.Left,
+    title: "John Arthur Basten",
+    description: ""
+  },
+
+{ id: 512,
+  parents: [406, 410],
+  relativeItem: 511,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "George Alphonsus Halpin, Jr.",
+  description: "" },
+  { id: 5121,
+    spouses: [512],
+    relativeItem: 512,
+    placementType: primitives.AdviserPlacementType.Right,
+    title: "Arline Joyce Ruff",
+    description: ""
+  },
+
+
+{ id: 513,
+  parents: [406, 410],
+  relativeItem: 5131,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Jeanne Kathryn Halpin",
+  description: "" },
+  { id: 5131,
+    spouses: [513],
+    relativeItem: 5121,
+    placementType: primitives.AdviserPlacementType.Right,
+    title: "Cletus Calvert Canavan, Jr.",
+    description: ""
+  },
+
+
+{ id: 514,
+  parents: [406, 410],
+  relativeItem: 513,
+  placementType: primitives.AdviserPlacementType.Right,
+  title: "Michael James Halpin",
+  description: "" },
+  { id: 5141,
+    spouses: [514],
+    relativeItem: 514,
+    placementType: primitives.AdviserPlacementType.Right,
+    title: "Mary Ann Moran",
+    description: ""
+  },
+
+
+{ id: 515,
+  parents: [406, 410],
+  relativeItem: 514,
+  title: "Robert Franklin Halpin",
+  description: "" },
+  { id: 5151,
+    spouses: [515],
+    relativeItem: 515,
+    placementType: primitives.AdviserPlacementType.Right,
+    title: "Patricia Ann Coyne",
+    description: ""
+  },
+
+
+{ id: 516,
+  parents: [406, 410],
+  relativeItem: 5151,
+  title: "John Thomas Halpin",
+  description: "" },
+
+
+{ id: 517,
+  parents: [406, 410],
+  relativeItem: 516,
+  title: "Kathryn Ellen Halpin",
+  description: "" }
+
+
+
+      ];
+
+      options.pageFitMode = primitives.PageFitMode.AutoSize;
+      options.items = items;
+      options.cursorItem = 50;
+      options.linesWidth = 3;
+      options.linesColor = "black";
+      options.hasSelectorCheckbox = primitives.Enabled.False;
+      options.normalLevelShift = 50;
+      options.lineLevelShift = 50;
+      options.normalItemsInterval = 50;
+      options.lineItemsInterval = 50;
+      options.defaultTemplateName = "tree";
+      options.templates = [getTreeTemplate()];
+      options.onItemRender = onTemplateRender;
+      options.bevelSize = 1;
+      options.elbowDotSize = 1;
+
+      control = primitives.FamDiagram(document.getElementById("basicdiagram"), options);
+    });
+
+    function onTemplateRender(event, data) {
+      switch (data.renderingMode) {
+        case primitives.RenderingMode.Create:
+          /* Initialize template content here */
+          break;
+        case primitives.RenderingMode.Update:
+          /* Update template content here */
+          break;
+      }
+
+      var itemConfig = data.context;
+
+      if (data.templateName == "tree") {
+        var title = data.element.firstChild;
+        title.textContent = itemConfig.title;
+      }
+    }
+
+    function getTreeTemplate() {
+      var result = new primitives.TemplateConfig();
+      result.name = "tree";
+
+      result.itemSize = new primitives.Size(175, 60);
+
+
+      result.itemTemplate =
+        '<div class="tree-item tree-corner-all tree-item-frame" style="width:' + result.itemSize.width + 'px; height: ' + result.itemSize.height + 'px;">'
+        + '<div name="title" class="tree-item">'
+        + '</div>'
+        + '</div>';
+
+      return result;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="basicdiagram" style="width: 1000px; height: 1000px;"></div>
+</body>
+
+</html>
